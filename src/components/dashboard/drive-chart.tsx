@@ -33,6 +33,14 @@ interface DriveChartProps {
 export function DriveChart({ data }: DriveChartProps) {
   const t = useTranslations("Drives")
 
+  const dominantLabel = useMemo(() => {
+    if (data.dominantDrive) return t(data.dominantDrive as (typeof DRIVE_KEYS)[number])
+    const highest = DRIVE_KEYS.reduce((best, key) =>
+      data[key].salience > data[best].salience ? key : best
+    , DRIVE_KEYS[0])
+    return t(highest)
+  }, [data, t])
+
   const chartConfig: ChartConfig = useMemo(
     () => ({
       satiation: { label: t("satiation"), color: "var(--chart-3)" },
@@ -62,7 +70,7 @@ export function DriveChart({ data }: DriveChartProps) {
             <CardDescription>{t("description")}</CardDescription>
           </div>
           <Badge variant="secondary" className="text-xs">
-            {t("dominant")}: {data.dominantDrive ? t(data.dominantDrive as typeof DRIVE_KEYS[number]) : "—"}
+            {t("dominant")}: {dominantLabel}
           </Badge>
         </div>
       </CardHeader>
