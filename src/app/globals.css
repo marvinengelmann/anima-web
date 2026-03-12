@@ -138,15 +138,6 @@
   --sidebar-ring: oklch(0.586 0.231 241);
 }
 
-@keyframes pathFlow {
-  0% {
-    stroke-dashoffset: 1;
-  }
-  100% {
-    stroke-dashoffset: -1;
-  }
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
