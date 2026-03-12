@@ -13,7 +13,7 @@ export function HeroSection() {
     <section className="relative overflow-hidden border-b border-border/50 py-20 sm:py-28">
       <div className="absolute inset-0 z-0">
         <Waves
-          strokeColor="var(--color-muted-foreground)"
+          strokeColor="var(--color-border)"
           backgroundColor="transparent"
           pointerSize={0.4}
         />
