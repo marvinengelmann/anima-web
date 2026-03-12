@@ -39,12 +39,13 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale })
 
-  const title = t("Dashboard.title")
+  const title = "ANIMA"
+  const tagline = t("Hero.tagline")
   const description = t("Hero.description")
 
   return {
     title: {
-      default: `${title} — ${t("Hero.tagline")}`,
+      default: `${title} — ${tagline}`,
       template: `%s | ${title}`,
     },
     description,
@@ -62,12 +63,12 @@ export async function generateMetadata({
       alternateLocale: locale === "de" ? "en_US" : "de_DE",
       url: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       siteName: "ANIMA",
-      title: `${title} — ${t("Hero.tagline")}`,
+      title: `${title} — ${tagline}`,
       description,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} — ${t("Hero.tagline")}`,
+      title: `${title} — ${tagline}`,
       description,
     },
     robots: {
@@ -111,7 +112,7 @@ export async function generateMetadata({
             "Somatic",
           ],
     category: "technology",
-    applicationName: "ANIMA Dashboard",
+    applicationName: "ANIMA",
   }
 }
 
