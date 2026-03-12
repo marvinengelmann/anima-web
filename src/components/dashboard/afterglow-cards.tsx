@@ -1,6 +1,7 @@
 "use client"
 
 import { useTranslations } from "next-intl"
+import { useMemo } from "react"
 import {
   Card,
   CardContent,
@@ -8,16 +9,43 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import type { AfterglowEntry } from "@/lib/types"
+import type { AfterglowEntry, EmotionalState } from "@/lib/types"
 import { EMOTION_COLORS } from "@/lib/colors"
 
 interface AfterglowCardsProps {
   entries: AfterglowEntry[]
 }
 
+interface GroupedAfterglow {
+  dimension: keyof EmotionalState
+  count: number
+  totalDelta: number
+  maxIntensity: number
+  maxTicks: number
+}
+
+
 export function AfterglowCards({ entries }: AfterglowCardsProps) {
   const t = useTranslations("Afterglow")
   const te = useTranslations("Emotions")
+
+  const groups = useMemo(() => {
+    const map = new Map<keyof EmotionalState, AfterglowEntry[]>()
+    for (const entry of entries) {
+      const list = map.get(entry.dimension) ?? []
+      list.push(entry)
+      map.set(entry.dimension, list)
+    }
+    return Array.from(map.entries())
+      .map(([dimension, items]): GroupedAfterglow => ({
+        dimension,
+        count: items.length,
+        totalDelta: items.reduce((sum, e) => sum + e.delta, 0),
+        maxIntensity: Math.max(...items.map((e) => e.intensity)),
+        maxTicks: Math.max(...items.map((e) => e.remainingTicks)),
+      }))
+      .sort((a, b) => Math.abs(b.totalDelta) - Math.abs(a.totalDelta))
+  }, [entries])
 
   if (entries.length === 0) return null
 
@@ -29,53 +57,59 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {entries.map((entry, i) => {
-            const color = EMOTION_COLORS[entry.dimension]
-            const isPositive = entry.delta > 0
+          {groups.map((group) => {
+            const color = EMOTION_COLORS[group.dimension]
+            const isPositive = group.totalDelta > 0
+            const layers = Math.min(group.count - 1, 3)
             return (
-              <div
-                key={`${entry.dimension}-${i}`}
-                className="relative overflow-hidden rounded-lg border border-border/50 p-3"
-              >
-                <div
-                  className="absolute inset-0 opacity-5"
-                  style={{ backgroundColor: color }}
-                />
-                <div className="relative">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="h-2.5 w-2.5 rounded-full"
-                        style={{ backgroundColor: color }}
-                      />
-                      <span className="text-sm font-medium">
-                        {te(entry.dimension)}
-                      </span>
+              <div key={group.dimension}>
+                <div className="relative" style={{ zIndex: 10 }}>
+                  <div className="relative overflow-hidden rounded-lg border border-border/50 bg-background/90 p-3 backdrop-blur-sm">
+                    <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundColor: color }} />
+                    <div className="relative">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: color }} />
+                          <span className="text-sm font-medium">{te(group.dimension)}</span>
+                          {group.count > 1 && (
+                            <span className="rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-mono tabular-nums text-muted-foreground">
+                              ×{group.count}
+                            </span>
+                          )}
+                        </div>
+                        <span className={`text-xs font-mono font-medium tabular-nums ${isPositive ? "text-green-500" : "text-red-500"}`}>
+                          {isPositive ? "+" : ""}{(group.totalDelta * 100).toFixed(0)}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between text-xs text-muted-foreground">
+                        <span>{t("ticksRemaining", { count: group.maxTicks })}</span>
+                        <span>{t("intensity")}: {(group.maxIntensity * 100).toFixed(0)}%</span>
+                      </div>
+                      <div className="mt-2 h-1 w-full rounded-full bg-muted">
+                        <div
+                          className="h-full rounded-full transition-all"
+                          style={{ width: `${group.maxIntensity * 100}%`, backgroundColor: color }}
+                        />
+                      </div>
                     </div>
-                    <span
-                      className={`text-xs font-mono font-medium tabular-nums ${
-                        isPositive ? "text-green-500" : "text-red-500"
-                      }`}
-                    >
-                      {isPositive ? "+" : ""}{(entry.delta * 100).toFixed(0)}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>{t("ticksRemaining", { count: entry.remainingTicks })}</span>
-                    <span>
-                      {t("intensity")}: {(entry.intensity * 100).toFixed(0)}%
-                    </span>
-                  </div>
-                  <div className="mt-2 h-1 w-full rounded-full bg-muted">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{
-                        width: `${entry.intensity * 100}%`,
-                        backgroundColor: color,
-                      }}
-                    />
                   </div>
                 </div>
+                {Array.from({ length: layers }, (_, i) => (
+                  <div
+                    key={i}
+                    className="relative rounded-lg border border-border/50 bg-background/90 backdrop-blur-sm"
+                    style={{
+                      height: 8,
+                      marginTop: -4,
+                      marginLeft: (i + 1) * 6,
+                      marginRight: (i + 1) * 6,
+                      zIndex: 10 - (i + 1),
+                      opacity: 1 - (i + 1) * 0.3,
+                    }}
+                  >
+                    <div className="absolute inset-0 rounded-lg opacity-[0.03]" style={{ backgroundColor: color }} />
+                  </div>
+                ))}
               </div>
             )
           })}
