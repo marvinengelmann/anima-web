@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { ThemeProvider } from "next-themes"
+import PlausibleProvider from "next-plausible"
 import { routing } from "@/i18n/routing"
 import "../globals.css"
 
@@ -45,11 +46,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
       <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <PlausibleProvider domain="anima.engelmann.technology">
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+            <NextIntlClientProvider messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </PlausibleProvider>
       </body>
     </html>
   )
