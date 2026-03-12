@@ -1,12 +1,15 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
-import { getMessages } from "next-intl/server"
+import { getMessages, getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { ThemeProvider } from "next-themes"
 import PlausibleProvider from "next-plausible"
 import { routing } from "@/i18n/routing"
+import { StructuredData } from "@/components/structured-data"
 import "../globals.css"
+
+const BASE_URL = "https://anima.engelmann.technology"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +27,92 @@ const instrumentSerif = Instrument_Serif({
   weight: "400",
 })
 
-export const metadata: Metadata = {
-  title: "ANIMA Dashboard",
-  description: "Real-time emotional & somatic analytics for ANIMA",
+export async function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale })
+
+  const title = t("Dashboard.title")
+  const description = t("Hero.description")
+
+  return {
+    title: {
+      default: `${title} — ${t("Hero.tagline")}`,
+      template: `%s | ${title}`,
+    },
+    description,
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical: locale === "en" ? "/" : `/${locale}`,
+      languages: {
+        en: "/",
+        de: "/de",
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "de" ? "de_DE" : "en_US",
+      alternateLocale: locale === "de" ? "en_US" : "de_DE",
+      url: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
+      siteName: "ANIMA",
+      title: `${title} — ${t("Hero.tagline")}`,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} — ${t("Hero.tagline")}`,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    authors: [{ name: "Marvin Engelmann", url: "https://engelmann.technology" }],
+    creator: "Marvin Engelmann",
+    publisher: "Marvin Engelmann",
+    keywords:
+      locale === "de"
+        ? [
+            "KI",
+            "Künstliche Intelligenz",
+            "Bewusstsein",
+            "Emotionen",
+            "Dashboard",
+            "Echtzeit-Analytik",
+            "ANIMA",
+            "Selbstevolution",
+            "Affektsystem",
+            "Somatik",
+          ]
+        : [
+            "AI",
+            "Artificial Intelligence",
+            "Consciousness",
+            "Emotions",
+            "Dashboard",
+            "Real-time Analytics",
+            "ANIMA",
+            "Self-evolving",
+            "Affect System",
+            "Somatic",
+          ],
+    category: "technology",
+    applicationName: "ANIMA Dashboard",
+  }
 }
 
 export default async function LocaleLayout({
@@ -45,6 +131,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
+      <head>
+        <StructuredData locale={locale} />
+      </head>
       <body className="antialiased">
         <PlausibleProvider domain="anima.engelmann.technology">
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
