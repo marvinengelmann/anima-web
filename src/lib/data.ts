@@ -18,6 +18,13 @@ import {
   type SecondaryEmotion,
   type EmotionEvent,
   type TimeSeriesPoint,
+  type SelfConceptState,
+  type CoherenceState,
+  type AttachmentData,
+  type AttachmentStyle,
+  type PolyphonyState,
+  type DreamData,
+  type CognitiveStatusData,
 } from "@/lib/types"
 
 const DEFAULT_SOMATIC: SomaticState = {
@@ -168,3 +175,74 @@ export function computeSomaticAverage(history: SomaticHistoryRow[]): SomaticStat
   }
   return avg
 }
+
+export const fetchSelfConceptData = cache(async (): Promise<SelfConceptState | null> => {
+  return redis.get<SelfConceptState>("working:psyche:current")
+})
+
+export const fetchCoherenceData = cache(async (): Promise<CoherenceState | null> => {
+  return redis.get<CoherenceState>("working:coherence:state")
+})
+
+export const fetchAttachmentData = cache(async (): Promise<AttachmentData> => {
+  const [style, phase] = await Promise.all([
+    redis.get<AttachmentStyle>("working:attachment:current"),
+    redis.get<string>("working:attachment:phase"),
+  ])
+
+  return {
+    style: style ?? { secure: 0, anxious: 0, avoidant: 0, disorganized: 0 },
+    phase: phase ?? null,
+  }
+})
+
+export const fetchPolyphonyData = cache(async (): Promise<PolyphonyState | null> => {
+  return redis.get<PolyphonyState>("working:polyphony:lastDialog")
+})
+
+export const fetchDreamData = cache(async (): Promise<DreamData> => {
+  const [state, narrative, afterglow] = await Promise.all([
+    redis.get<string>("working:dream:state"),
+    redis.get<string>("working:dream:narrative"),
+    redis.get<DreamData["afterglow"]>("working:dream:afterglow"),
+  ])
+
+  return {
+    state: state ?? null,
+    narrative: narrative ?? null,
+    afterglow: afterglow ?? null,
+  }
+})
+
+interface MetacognitionState {
+  cognitiveClarity: number
+  cognitiveFatigue: number
+  confidenceCalibration: number
+  ruminationDetected: boolean
+  ruminationTopic: string | null
+  ruminationTicks: number
+  complexDecisionCount: number
+}
+
+export const fetchCognitiveData = cache(async (): Promise<CognitiveStatusData | null> => {
+  const [meta, attention] = await Promise.all([
+    redis.get<MetacognitionState>("working:metacognition:state"),
+    redis.get<string>("working:cognition:attention"),
+  ])
+
+  if (!meta) return null
+
+  return {
+    ...meta,
+    attentionFocus: attention ?? null,
+  }
+})
+
+export const fetchSystemHealth = cache(async (): Promise<string | null> => {
+  const result = await redis.get<{ overall: string }>("working:health:lastCheck")
+  return result?.overall ?? null
+})
+
+export const fetchRegisterData = cache(async (): Promise<string | null> => {
+  return redis.get<string>("working:communication:register")
+})

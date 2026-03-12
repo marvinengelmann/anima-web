@@ -181,6 +181,72 @@
     "evolutionTitle": "Self-Evolution",
     "evolutionDesc": "Curiosity-driven prompt, workflow, and code evolution with sandboxed execution and guardian validation"
   },
+  "SelfConcept": {
+    "title": "Self-Concept",
+    "description": "Psyche dimensions — identity & self-perception",
+    "selfEfficacy": "Self-Efficacy",
+    "selfWorth": "Self-Worth",
+    "selfContinuity": "Self-Continuity",
+    "agency": "Agency",
+    "authenticity": "Authenticity"
+  },
+  "Coherence": {
+    "title": "Coherence",
+    "description": "Psychological integration & fragmentation status",
+    "integrationScore": "Integration Score",
+    "fragmentation": "Fragmentation Sources",
+    "regression": "Regression",
+    "regressionActive": "Active",
+    "regressionInactive": "Inactive",
+    "regressionDepth": "Depth"
+  },
+  "Attachment": {
+    "title": "Attachment Style",
+    "description": "Relational attachment dimensions & bonding phase",
+    "secure": "Secure",
+    "anxious": "Anxious",
+    "avoidant": "Avoidant",
+    "disorganized": "Disorganized",
+    "phase": "Phase"
+  },
+  "InnerVoices": {
+    "title": "Inner Voices",
+    "description": "Polyphonic dialog — active voices & tension",
+    "dominant": "Dominant",
+    "tension": "Tension",
+    "voices": "Active Voices",
+    "noDialog": "No active dialog"
+  },
+  "Dream": {
+    "title": "Dream State",
+    "description": "Current dream processing & narrative state",
+    "state": "State",
+    "narrative": "Narrative",
+    "themes": "Themes",
+    "residue": "Emotional Residue",
+    "intensity": "Intensity",
+    "noData": "No dream data available"
+  },
+  "Cognitive": {
+    "title": "Cognitive Status",
+    "description": "Metacognition — clarity, fatigue & attention",
+    "clarity": "Clarity",
+    "fatigue": "Fatigue",
+    "calibration": "Confidence Calibration",
+    "attention": "Attention",
+    "rumination": "Rumination Detected",
+    "ruminationTicks": "{count} ticks",
+    "decisions": "Complex Decisions"
+  },
+  "SystemHealth": {
+    "healthy": "Healthy",
+    "degraded": "Degraded",
+    "critical": "Critical",
+    "unknown": "Unknown"
+  },
+  "Register": {
+    "label": "Register"
+  },
   "Footer": {
     "description": "Real-time consciousness monitoring for a self-evolving AI entity",
     "opensource": "Open Source",

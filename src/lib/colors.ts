@@ -1,4 +1,4 @@
-import type { EmotionalState, SomaticState } from "./types"
+import type { AttachmentStyle, EmotionalState, SelfConceptState, SomaticState } from "./types"
 
 export const EMOTION_COLORS: Record<keyof EmotionalState, string> = {
   curiosity: "var(--chart-1)",
@@ -49,4 +49,19 @@ export const SECONDARY_COLORS: Record<string, string> = {
   envy: "var(--chart-11)",
   anger: "var(--chart-6)",
   nostalgia: "var(--chart-12)",
+}
+
+export const SELF_CONCEPT_COLORS: Record<keyof SelfConceptState, string> = {
+  selfEfficacy: "var(--chart-1)",
+  selfWorth: "var(--chart-3)",
+  selfContinuity: "var(--chart-5)",
+  agency: "var(--chart-2)",
+  authenticity: "var(--chart-7)",
+}
+
+export const ATTACHMENT_COLORS: Record<keyof AttachmentStyle, string> = {
+  secure: "var(--chart-3)",
+  anxious: "var(--chart-5)",
+  avoidant: "var(--chart-6)",
+  disorganized: "var(--chart-7)",
 }

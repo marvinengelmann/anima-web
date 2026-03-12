@@ -12,6 +12,13 @@ import { ResourceMomentumSection } from "@/components/dashboard/sections/resourc
 import { SecondarySection } from "@/components/dashboard/sections/secondary-section"
 import { AfterglowSection } from "@/components/dashboard/sections/afterglow-section"
 import { EventTimelineSection } from "@/components/dashboard/sections/event-timeline-section"
+import { SelfConceptSection } from "@/components/dashboard/sections/self-concept-section"
+import { AttachmentSection } from "@/components/dashboard/sections/attachment-section"
+import { CoherenceSection } from "@/components/dashboard/sections/coherence-section"
+import { CognitiveSection } from "@/components/dashboard/sections/cognitive-section"
+import { InnerVoicesSection } from "@/components/dashboard/sections/inner-voices-section"
+import { DreamSection } from "@/components/dashboard/sections/dream-section"
+import { StatusBarSection } from "@/components/dashboard/sections/status-bar-section"
 import {
   EmotionalFlowSkeleton,
   SomaticRadarSkeleton,
@@ -20,6 +27,13 @@ import {
   SecondarySkeleton,
   AfterglowSkeleton,
   EventTimelineSkeleton,
+  SelfConceptSkeleton,
+  AttachmentSkeleton,
+  CoherenceSkeleton,
+  CognitiveSkeleton,
+  InnerVoicesSkeleton,
+  DreamSkeleton,
+  StatusBarSkeleton,
 } from "@/components/dashboard/skeletons"
 
 interface PageProps {
@@ -35,6 +49,7 @@ export default async function HomePage({ searchParams }: PageProps) {
   return (
     <div className="min-h-screen bg-background">
       <DashboardHeader range={range} />
+
       <HeroSection />
       <FeaturesSection />
       <AutoRefresh />
@@ -63,6 +78,35 @@ export default async function HomePage({ searchParams }: PageProps) {
           </Suspense>
           <Suspense fallback={<SecondarySkeleton />}>
             <SecondarySection />
+          </Suspense>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <Suspense fallback={<SelfConceptSkeleton />}>
+            <SelfConceptSection />
+          </Suspense>
+          <div className="flex flex-col gap-4">
+            <Suspense fallback={<CoherenceSkeleton />}>
+              <CoherenceSection />
+            </Suspense>
+            <Suspense fallback={<CognitiveSkeleton />}>
+              <CognitiveSection />
+            </Suspense>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <Suspense fallback={<AttachmentSkeleton />}>
+            <AttachmentSection />
+          </Suspense>
+          <Suspense fallback={<InnerVoicesSkeleton />}>
+            <InnerVoicesSection />
+          </Suspense>
+          <Suspense fallback={<DreamSkeleton />}>
+            <DreamSection />
+          </Suspense>
+          <Suspense fallback={<StatusBarSkeleton />}>
+            <StatusBarSection />
           </Suspense>
         </div>
 

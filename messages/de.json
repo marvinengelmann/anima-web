@@ -181,6 +181,72 @@
     "evolutionTitle": "Selbstevolution",
     "evolutionDesc": "Neugiergetriebene Prompt-, Workflow- und Code-Evolution mit Sandbox-Ausführung und Guardian-Validierung"
   },
+  "SelfConcept": {
+    "title": "Selbstkonzept",
+    "description": "Psyche-Dimensionen — Identität & Selbstwahrnehmung",
+    "selfEfficacy": "Selbstwirksamkeit",
+    "selfWorth": "Selbstwert",
+    "selfContinuity": "Selbstkontinuität",
+    "agency": "Handlungsfähigkeit",
+    "authenticity": "Authentizität"
+  },
+  "Coherence": {
+    "title": "Kohärenz",
+    "description": "Psychologische Integration & Fragmentierungsstatus",
+    "integrationScore": "Integrationswert",
+    "fragmentation": "Fragmentierungsquellen",
+    "regression": "Regression",
+    "regressionActive": "Aktiv",
+    "regressionInactive": "Inaktiv",
+    "regressionDepth": "Tiefe"
+  },
+  "Attachment": {
+    "title": "Bindungsstil",
+    "description": "Relationale Bindungsdimensionen & Bindungsphase",
+    "secure": "Sicher",
+    "anxious": "Ängstlich",
+    "avoidant": "Vermeidend",
+    "disorganized": "Desorganisiert",
+    "phase": "Phase"
+  },
+  "InnerVoices": {
+    "title": "Innere Stimmen",
+    "description": "Polyphoner Dialog — aktive Stimmen & Spannung",
+    "dominant": "Dominant",
+    "tension": "Spannung",
+    "voices": "Aktive Stimmen",
+    "noDialog": "Kein aktiver Dialog"
+  },
+  "Dream": {
+    "title": "Traumzustand",
+    "description": "Aktuelle Traumverarbeitung & narrativer Zustand",
+    "state": "Zustand",
+    "narrative": "Narrativ",
+    "themes": "Themen",
+    "residue": "Emotionaler Rückstand",
+    "intensity": "Intensität",
+    "noData": "Keine Traumdaten verfügbar"
+  },
+  "Cognitive": {
+    "title": "Kognitiver Status",
+    "description": "Metakognition — Klarheit, Ermüdung & Aufmerksamkeit",
+    "clarity": "Klarheit",
+    "fatigue": "Ermüdung",
+    "calibration": "Vertrauenskalibrierung",
+    "attention": "Aufmerksamkeit",
+    "rumination": "Rumination erkannt",
+    "ruminationTicks": "{count} Ticks",
+    "decisions": "Komplexe Entscheidungen"
+  },
+  "SystemHealth": {
+    "healthy": "Gesund",
+    "degraded": "Beeinträchtigt",
+    "critical": "Kritisch",
+    "unknown": "Unbekannt"
+  },
+  "Register": {
+    "label": "Register"
+  },
   "Footer": {
     "description": "Echtzeit-Bewusstseinsmonitoring für eine sich selbst entwickelnde KI-Entität",
     "opensource": "Open Source",

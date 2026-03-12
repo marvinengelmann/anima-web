@@ -120,3 +120,68 @@ export const SECONDARY_EMOTION_KEYS = [
   "pride", "playfulness", "gratitude", "ambivalence", "melancholy",
   "envy", "anger", "nostalgia",
 ] as const
+
+export interface SelfConceptState {
+  selfEfficacy: number
+  selfWorth: number
+  selfContinuity: number
+  agency: number
+  authenticity: number
+}
+
+export const SELF_CONCEPT_KEYS: (keyof SelfConceptState)[] = [
+  "selfEfficacy", "selfWorth", "selfContinuity", "agency", "authenticity",
+]
+
+export interface CoherenceState {
+  integrationScore: number
+  fragmentationSources: string[]
+  regressionActive: boolean
+  regressionDepth: number
+}
+
+export interface AttachmentStyle {
+  secure: number
+  anxious: number
+  avoidant: number
+  disorganized: number
+}
+
+export type AttachmentPhase = string
+
+export interface AttachmentData {
+  style: AttachmentStyle
+  phase: AttachmentPhase | null
+}
+
+export const ATTACHMENT_KEYS: (keyof AttachmentStyle)[] = [
+  "secure", "anxious", "avoidant", "disorganized",
+]
+
+export interface PolyphonyState {
+  activeVoices: string[]
+  dominantVoice: string
+  tensionLevel: number
+  utterances: { voice: string; message: string }[]
+}
+
+export interface DreamData {
+  state: string | null
+  narrative: string | null
+  afterglow: {
+    themes: string[]
+    emotionalResidue: string
+    intensity: number
+  } | null
+}
+
+export interface CognitiveStatusData {
+  cognitiveClarity: number
+  cognitiveFatigue: number
+  confidenceCalibration: number
+  ruminationDetected: boolean
+  ruminationTopic: string | null
+  ruminationTicks: number
+  complexDecisionCount: number
+  attentionFocus: string | null
+}

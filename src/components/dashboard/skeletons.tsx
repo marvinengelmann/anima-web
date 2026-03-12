@@ -166,6 +166,167 @@ export function AfterglowSkeleton() {
   )
 }
 
+export function SelfConceptSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <Skeleton className="h-5 w-32" />
+        <Skeleton className="h-4 w-56" />
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="mx-auto aspect-square w-full max-w-[420px] rounded-full" />
+      </CardContent>
+    </Card>
+  )
+}
+
+export function CoherenceSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-28" />
+            <Skeleton className="h-4 w-56" />
+          </div>
+          <Skeleton className="h-5 w-28 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <div className="flex justify-between">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="h-4 w-10" />
+          </div>
+          <Skeleton className="h-2 w-full rounded-full" />
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function AttachmentSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-36" />
+            <Skeleton className="h-4 w-56" />
+          </div>
+          <Skeleton className="h-5 w-24 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="mx-auto aspect-square w-full max-w-[420px] rounded-full" />
+      </CardContent>
+    </Card>
+  )
+}
+
+export function InnerVoicesSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-32" />
+            <Skeleton className="h-4 w-52" />
+          </div>
+          <Skeleton className="h-5 w-28 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <div className="flex justify-between">
+            <Skeleton className="h-4 w-20" />
+            <Skeleton className="h-4 w-10" />
+          </div>
+          <Skeleton className="h-2 w-full rounded-full" />
+        </div>
+        <div className="flex gap-1.5">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <Skeleton key={i} className="h-5 w-16 rounded-full" />
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function DreamSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-32" />
+            <Skeleton className="h-4 w-52" />
+          </div>
+          <Skeleton className="h-5 w-24 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/4" />
+        <div className="flex gap-1.5">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <Skeleton key={i} className="h-5 w-20 rounded-full" />
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function CognitiveSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-36" />
+            <Skeleton className="h-4 w-52" />
+          </div>
+          <Skeleton className="h-5 w-28 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div key={i} className="space-y-2">
+            <div className="flex justify-between">
+              <Skeleton className="h-4 w-24" />
+              <Skeleton className="h-4 w-10" />
+            </div>
+            <Skeleton className="h-2 w-full rounded-full" />
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  )
+}
+
+export function StatusBarSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <Skeleton className="h-5 w-20" />
+        <Skeleton className="h-4 w-48" />
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="flex items-center gap-1.5">
+          <Skeleton className="h-2 w-2 rounded-full" />
+          <Skeleton className="h-3 w-16" />
+        </div>
+        <div className="flex items-center gap-1.5">
+          <Skeleton className="h-3 w-14" />
+          <Skeleton className="h-5 w-20 rounded-full" />
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
 export function EventTimelineSkeleton() {
   return (
     <Card>
