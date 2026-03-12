@@ -66,10 +66,11 @@ export default async function HomePage({ searchParams }: PageProps) {
           </Suspense>
         </div>
 
-        <Suspense fallback={<EventTimelineSkeleton />}>
-          <EventTimelineSection range={range} />
-        </Suspense>
       </main>
+
+      <Suspense fallback={<EventTimelineSkeleton />}>
+        <EventTimelineSection range={range} />
+      </Suspense>
 
       <SiteFooter />
     </div>
