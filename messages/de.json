@@ -225,11 +225,14 @@
     "title": "Traumzustand",
     "description": "Traumverarbeitung & narrativer Zustand",
     "state": "Zustand",
+    "idle": "Ruhend",
+    "dreaming": "Träumend",
+    "waking": "Erwachend",
     "narrative": "Narrativ",
     "themes": "Themen",
     "residue": "Emotionaler Rückstand",
     "intensity": "Intensität",
-    "noData": "Keine Traumdaten verfügbar"
+    "noData": "Keine Traumaktivität"
   },
   "Cognitive": {
     "title": "Kognitiver Status",
@@ -247,6 +250,10 @@
     "degraded": "Beeinträchtigt",
     "critical": "Kritisch",
     "unknown": "Unbekannt"
+  },
+  "Lifecycle": {
+    "label": "Lifecycle",
+    "none": "—"
   },
   "Register": {
     "label": "Register"

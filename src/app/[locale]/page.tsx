@@ -56,41 +56,47 @@ export default async function HomePage({ searchParams }: PageProps) {
       <AutoRefresh />
 
       <div className="bg-black/20">
-      <main className="mx-auto max-w-7xl space-y-4 px-4 py-4 sm:px-6">
-        <div className="pb-4 pt-8">
-          <AnalyticsHeader />
-        </div>
-        <Suspense fallback={<EmotionalFlowSkeleton />}>
-          <EmotionalFlowSection range={range} />
-        </Suspense>
+        <main className="mx-auto max-w-7xl space-y-4 px-4 py-4 sm:px-6">
+          <div className="pb-4 pt-8">
+            <AnalyticsHeader />
+          </div>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <Suspense fallback={<SomaticRadarSkeleton />}>
-            <SomaticSection range={range} />
+          <Suspense fallback={<StatusBarSkeleton />}>
+            <StatusBarSection />
           </Suspense>
-          <Suspense fallback={<DriveSkeleton />}>
-            <DriveSection />
-          </Suspense>
-        </div>
 
-        <Suspense fallback={<AfterglowSkeleton />}>
-          <AfterglowSection range={range} />
-        </Suspense>
+          <Suspense fallback={<EmotionalFlowSkeleton />}>
+            <EmotionalFlowSection range={range} />
+          </Suspense>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <Suspense fallback={<ResourceMomentumSkeleton />}>
-            <ResourceMomentumSection range={range} />
-          </Suspense>
-          <Suspense fallback={<SecondarySkeleton />}>
-            <SecondarySection />
-          </Suspense>
-        </div>
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <Suspense fallback={<ResourceMomentumSkeleton />}>
+              <ResourceMomentumSection range={range} />
+            </Suspense>
+            <Suspense fallback={<DriveSkeleton />}>
+              <DriveSection />
+            </Suspense>
+          </div>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <Suspense fallback={<SelfConceptSkeleton />}>
-            <SelfConceptSection />
-          </Suspense>
-          <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <Suspense fallback={<SomaticRadarSkeleton />}>
+              <SomaticSection range={range} />
+            </Suspense>
+            <Suspense fallback={<SecondarySkeleton />}>
+              <SecondarySection />
+            </Suspense>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <Suspense fallback={<AttachmentSkeleton />}>
+              <AttachmentSection />
+            </Suspense>
+            <Suspense fallback={<SelfConceptSkeleton />}>
+              <SelfConceptSection />
+            </Suspense>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <Suspense fallback={<CoherenceSkeleton />}>
               <CoherenceSection />
             </Suspense>
@@ -98,25 +104,20 @@ export default async function HomePage({ searchParams }: PageProps) {
               <CognitiveSection />
             </Suspense>
           </div>
-        </div>
 
-        <Suspense fallback={<AttachmentSkeleton />}>
-          <AttachmentSection />
-        </Suspense>
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <Suspense fallback={<InnerVoicesSkeleton />}>
+              <InnerVoicesSection />
+            </Suspense>
+            <Suspense fallback={<DreamSkeleton />}>
+              <DreamSection />
+            </Suspense>
+          </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto_1fr]">
-          <Suspense fallback={<InnerVoicesSkeleton />}>
-            <InnerVoicesSection />
+          <Suspense fallback={<AfterglowSkeleton />}>
+            <AfterglowSection range={range} />
           </Suspense>
-          <Suspense fallback={<StatusBarSkeleton />}>
-            <StatusBarSection />
-          </Suspense>
-          <Suspense fallback={<DreamSkeleton />}>
-            <DreamSection />
-          </Suspense>
-        </div>
-
-      </main>
+        </main>
       </div>
 
       <Suspense fallback={<EventTimelineSkeleton />}>

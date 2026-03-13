@@ -1,26 +1,20 @@
-import { fetchSystemHealth, fetchRegisterData } from "@/lib/data"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { fetchSystemHealth, fetchRegisterData, fetchLifecyclePhase } from "@/lib/data"
 import { SystemHealthBadge } from "../system-health-badge"
 import { RegisterBadge } from "../register-badge"
+import { LifecycleBadge } from "../lifecycle-badge"
 
 export async function StatusBarSection() {
-  const [health, register] = await Promise.all([
+  const [health, register, lifecycle] = await Promise.all([
     fetchSystemHealth(),
     fetchRegisterData(),
+    fetchLifecyclePhase(),
   ])
 
-  if (!health && !register) return null
-
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>System</CardTitle>
-        <CardDescription>Health & communication status</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {health && <SystemHealthBadge status={health} />}
-        {register && <RegisterBadge register={register} />}
-      </CardContent>
-    </Card>
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 rounded-2xl border border-border/50 bg-background/80 px-5 py-3 text-sm backdrop-blur-sm">
+      <SystemHealthBadge status={health ?? "unknown"} />
+      {register && <RegisterBadge register={register} />}
+      <LifecycleBadge event={lifecycle} />
+    </div>
   )
 }

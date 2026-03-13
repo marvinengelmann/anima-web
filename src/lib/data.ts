@@ -238,6 +238,10 @@ export const fetchCognitiveData = cache(async (): Promise<CognitiveStatusData | 
   }
 })
 
+export const fetchLifecyclePhase = cache(async (): Promise<string | null> => {
+  return redis.get<string>("working:lifecycle:event")
+})
+
 export const fetchSystemHealth = cache(async (): Promise<string | null> => {
   const result = await redis.get<{ overall: string }>("working:health:lastCheck")
   return result?.overall ?? null

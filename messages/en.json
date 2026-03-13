@@ -225,11 +225,14 @@
     "title": "Dream State",
     "description": "Dream processing & narrative state",
     "state": "State",
+    "idle": "Idle",
+    "dreaming": "Dreaming",
+    "waking": "Waking",
     "narrative": "Narrative",
     "themes": "Themes",
     "residue": "Emotional Residue",
     "intensity": "Intensity",
-    "noData": "No dream data available"
+    "noData": "No recent dream activity"
   },
   "Cognitive": {
     "title": "Cognitive Status",
@@ -247,6 +250,10 @@
     "degraded": "Degraded",
     "critical": "Critical",
     "unknown": "Unknown"
+  },
+  "Lifecycle": {
+    "label": "Lifecycle",
+    "none": "—"
   },
   "Register": {
     "label": "Register"
