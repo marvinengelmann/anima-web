@@ -18,22 +18,6 @@ interface DreamCardProps {
 export function DreamCard({ data }: DreamCardProps) {
   const t = useTranslations("Dream")
 
-  const hasData = data.state || data.narrative || data.afterglow
-
-  if (!hasData) {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("title")}</CardTitle>
-          <CardDescription>{t("description")}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground">{t("noData")}</p>
-        </CardContent>
-      </Card>
-    )
-  }
-
   return (
     <Card>
       <CardHeader>
@@ -42,11 +26,9 @@ export function DreamCard({ data }: DreamCardProps) {
             <CardTitle>{t("title")}</CardTitle>
             <CardDescription>{t("description")}</CardDescription>
           </div>
-          {data.state && (
-            <Badge variant="secondary" className="text-xs">
-              {t("state")}: {data.state}
-            </Badge>
-          )}
+          <Badge variant="secondary" className="text-xs">
+            {t("state")}: {t(data.state ?? "idle")}
+          </Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -72,10 +54,16 @@ export function DreamCard({ data }: DreamCardProps) {
               </div>
             )}
 
-            {data.afterglow.emotionalResidue && (
-              <div className="space-y-1">
+            {Object.keys(data.afterglow.emotionalResidue).length > 0 && (
+              <div className="space-y-2">
                 <span className="text-sm text-muted-foreground">{t("residue")}</span>
-                <p className="text-sm">{data.afterglow.emotionalResidue}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {Object.entries(data.afterglow.emotionalResidue).map(([key, value]) => (
+                    <Badge key={key} variant="outline" className="text-xs">
+                      {key}: {Math.round(value * 100)}%
+                    </Badge>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -92,6 +80,10 @@ export function DreamCard({ data }: DreamCardProps) {
               </div>
             </div>
           </>
+        )}
+
+        {!data.narrative && !data.afterglow && (
+          <p className="text-sm text-muted-foreground">{t("noData")}</p>
         )}
       </CardContent>
     </Card>
