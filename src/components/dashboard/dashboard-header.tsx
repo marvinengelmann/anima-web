@@ -19,7 +19,7 @@ export function DashboardHeader({ range }: DashboardHeaderProps) {
       <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-2 sm:px-6">
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 rounded-full bg-primary" />
-          <h1 className="text-sm font-semibold tracking-tight">ANIMA</h1>
+          <span className="text-sm font-semibold tracking-tight">ANIMA</span>
         </div>
         <TimeRangeSelector value={range} />
         <div className="ml-auto flex items-center gap-3">
