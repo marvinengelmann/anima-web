@@ -45,10 +45,10 @@ export function FeaturesSection() {
     <section className="border-b border-border/50 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-pretty text-3xl sm:text-4xl lg:text-5xl">
+          <h2 className="text-balance">
             {t("title")}
           </h2>
-          <p className="mt-4 text-pretty text-muted-foreground lg:text-lg">
+          <p className="mt-4 text-balance text-sm text-muted-foreground">
             {t("subtitle")}
           </p>
         </div>
@@ -79,8 +79,8 @@ export function FeaturesSection() {
 
                 <div className="relative z-10 flex h-full flex-col items-center justify-start gap-3 rounded-2xl p-5 text-center">
                   <Icon className="mt-2 h-7 w-7 stroke-[1.5] text-muted-foreground transition-colors group-hover:text-primary" />
-                  <h3 className="text-xl">{t(`${key}Title`)}</h3>
-                  <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <h3>{t(`${key}Title`)}</h3>
+                  <p className="text-balance text-sm leading-relaxed text-muted-foreground">
                     {t(`${key}Desc`)}
                   </p>
                 </div>

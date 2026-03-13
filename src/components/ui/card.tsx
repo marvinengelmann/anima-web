@@ -38,7 +38,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"h3">) {
     <h3
       data-slot="card-title"
       className={cn(
-        "text-2xl leading-snug group-data-[size=sm]/card:text-xl",
+        "leading-snug",
         className
       )}
       {...props}

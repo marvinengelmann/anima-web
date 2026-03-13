@@ -19,6 +19,7 @@ import { CognitiveSection } from "@/components/dashboard/sections/cognitive-sect
 import { InnerVoicesSection } from "@/components/dashboard/sections/inner-voices-section"
 import { DreamSection } from "@/components/dashboard/sections/dream-section"
 import { StatusBarSection } from "@/components/dashboard/sections/status-bar-section"
+import { AnalyticsHeader } from "@/components/dashboard/analytics-header"
 import {
   EmotionalFlowSkeleton,
   SomaticRadarSkeleton,
@@ -54,7 +55,11 @@ export default async function HomePage({ searchParams }: PageProps) {
       <FeaturesSection />
       <AutoRefresh />
 
+      <div className="bg-black/20">
       <main className="mx-auto max-w-7xl space-y-4 px-4 py-4 sm:px-6">
+        <div className="pb-4 pt-8">
+          <AnalyticsHeader />
+        </div>
         <Suspense fallback={<EmotionalFlowSkeleton />}>
           <EmotionalFlowSection range={range} />
         </Suspense>
@@ -112,6 +117,7 @@ export default async function HomePage({ searchParams }: PageProps) {
         </div>
 
       </main>
+      </div>
 
       <Suspense fallback={<EventTimelineSkeleton />}>
         <EventTimelineSection range={range} />

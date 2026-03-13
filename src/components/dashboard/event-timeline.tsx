@@ -80,10 +80,10 @@ export function EventTimeline({ events, maxItems = 8 }: EventTimelineProps) {
     <section className="border-t border-border/50 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-pretty text-3xl sm:text-4xl lg:text-5xl">
+          <h2>
             {t("title")}
           </h2>
-          <p className="mt-4 text-pretty text-muted-foreground lg:text-lg">
+          <p className="mt-4 text-sm text-muted-foreground">
             {t("description")}
           </p>
         </div>

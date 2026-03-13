@@ -21,7 +21,10 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="max-w-4xl">
-          <h1 className="max-w-3xl text-pretty text-4xl text-foreground md:text-6xl">
+          <p className="text-sm font-medium tracking-widest text-muted-foreground uppercase">
+            {t("tagline")}
+          </p>
+          <h1 className="mt-4 max-w-3xl text-balance text-foreground">
             {t("heading")}
           </h1>
 
