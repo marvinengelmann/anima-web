@@ -95,18 +95,19 @@ export default async function HomePage({ searchParams }: PageProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <Suspense fallback={<AttachmentSkeleton />}>
-            <AttachmentSection />
-          </Suspense>
+        <Suspense fallback={<AttachmentSkeleton />}>
+          <AttachmentSection />
+        </Suspense>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto_1fr]">
           <Suspense fallback={<InnerVoicesSkeleton />}>
             <InnerVoicesSection />
           </Suspense>
-          <Suspense fallback={<DreamSkeleton />}>
-            <DreamSection />
-          </Suspense>
           <Suspense fallback={<StatusBarSkeleton />}>
             <StatusBarSection />
+          </Suspense>
+          <Suspense fallback={<DreamSkeleton />}>
+            <DreamSection />
           </Suspense>
         </div>
 
