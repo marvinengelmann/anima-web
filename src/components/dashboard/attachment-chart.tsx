@@ -58,7 +58,7 @@ export function AttachmentChart({ data }: AttachmentChartProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="mx-auto aspect-[4/3] w-full">
+        <ChartContainer config={chartConfig} className="mx-auto aspect-square w-full">
           <RadarChart data={chartData} cx="50%" cy="50%" outerRadius="65%">
             <PolarGrid gridType="circle" />
             <PolarAngleAxis

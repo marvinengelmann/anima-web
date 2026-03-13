@@ -105,7 +105,7 @@ export const TIME_RANGES: TimeRange[] = [
 
 export const EMOTION_KEYS: (keyof EmotionalState)[] = [
   "curiosity", "satisfaction", "frustration", "boredom", "excitement",
-  "caution", "connection", "confidence", "energy",
+  "caution", "connection", "confidence",
 ]
 
 export const SOMATIC_KEYS: (keyof SomaticState)[] = [
@@ -170,8 +170,9 @@ export interface DreamData {
   narrative: string | null
   afterglow: {
     themes: string[]
-    emotionalResidue: string
+    emotionalResidue: Record<string, number>
     intensity: number
+    createdAt: string
   } | null
 }
 
