@@ -154,7 +154,7 @@ export function Waves({
 
     // Mouse handler
     const onMouseMove = (e: MouseEvent) => {
-        updateMousePosition(e.pageX, e.pageY)
+        updateMousePosition(e.clientX, e.clientY)
     }
 
     // Touch handler
@@ -166,11 +166,12 @@ export function Waves({
 
     // Update mouse position
     const updateMousePosition = (x: number, y: number) => {
-        if (!boundingRef.current) return
+        if (!containerRef.current) return
 
+        const rect = containerRef.current.getBoundingClientRect()
         const mouse = mouseRef.current
-        mouse.x = x - boundingRef.current.left
-        mouse.y = y - boundingRef.current.top + window.scrollY
+        mouse.x = x - rect.left
+        mouse.y = y - rect.top
 
         if (!mouse.set) {
             mouse.sx = mouse.x
