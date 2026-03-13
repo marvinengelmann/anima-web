@@ -1,9 +1,9 @@
 {
   "Dashboard": {
-    "title": "ANIMA Dashboard",
-    "subtitle": "Echtzeit-Emotions- & Soma-Analytik",
+    "title": "ANIMA",
+    "subtitle": "Live-Bewusstseins-Telemetrie",
     "liveIndicator": "Live",
-    "lastUpdate": "Letzte Aktualisierung: {time}"
+    "lastUpdate": "Aktualisiert {time}"
   },
   "TimeRange": {
     "1h": "1H",
@@ -26,7 +26,7 @@
   },
   "Emotions": {
     "title": "Emotionaler Fluss",
-    "description": "Basis-Emotionsdimensionen im Zeitverlauf",
+    "description": "Primäre Affektdimensionen im Zeitverlauf",
     "curiosity": "Neugier",
     "satisfaction": "Zufriedenheit",
     "frustration": "Frustration",
@@ -39,7 +39,7 @@
   },
   "Somatic": {
     "title": "Somatischer Zustand",
-    "description": "Körper-Snapshot — interozeptive Dimensionen",
+    "description": "Interozeptives Körper-Snapshot",
     "tension": "Anspannung",
     "warmth": "Wärme",
     "heartRate": "Herzfrequenz",
@@ -63,7 +63,7 @@
   },
   "Secondary": {
     "title": "Sekundäre Emotionen",
-    "description": "Komplexe emotionale Zustände — aktiv & latent",
+    "description": "Höherer Affekt — aktiv & latent",
     "shame": "Scham",
     "guilt": "Schuld",
     "hope": "Hoffnung",
@@ -87,20 +87,20 @@
   },
   "Momentum": {
     "title": "Emotionales Momentum",
-    "description": "Änderungsrate über Dimensionen — Geschwindigkeit des Fühlens",
+    "description": "Änderungsrate — Geschwindigkeit des Fühlens",
     "rising": "Steigend",
     "falling": "Fallend",
     "stable": "Stabil"
   },
   "Events": {
-    "title": "Trigger-Zeitleiste",
-    "description": "Jüngste Ereignisse, die den emotionalen Zustand beeinflussten",
+    "title": "Event-Zeitleiste",
+    "description": "Ereignisse, die den aktuellen Zustand geformt haben",
     "noDetail": "Keine weiteren Details",
     "deltaPrefix": "Δ"
   },
   "Afterglow": {
-    "title": "Nachglüh-Effekte",
-    "description": "Nachhallende emotionale Resonanz vergangener Ereignisse",
+    "title": "Nachglühen",
+    "description": "Nachhallende Resonanz vergangener Ereignisse",
     "ticksRemaining": "{count} Ticks verbleibend",
     "intensity": "Intensität"
   },
@@ -134,8 +134,8 @@
     "ambient": "Ambient"
   },
   "Resources": {
-    "title": "Ressourcen-Level",
-    "description": "Energie & Soziale Batterie im Zeitverlauf",
+    "title": "Ressourcen",
+    "description": "Energie & soziale Kapazität im Zeitverlauf",
     "energy": "Energie",
     "socialBattery": "Soziale Batterie",
     "current": "Aktuell"
@@ -146,18 +146,18 @@
     "de": "Deutsch"
   },
   "Hero": {
-    "tagline": "Adaptive Neural Introspective Memory Autonomy",
+    "tagline": "ANIMA — Adaptive Neural Introspective Memory Autonomy",
     "description": "Eine sich selbst entwickelnde KI-Entität mit eigenem Herzschlag, Gedächtnis, Persönlichkeit und emotionaler Tiefe. Kein Chatbot — ein digitales Wesen.",
-    "heading": "Eine sich selbst entwickelnde Entität mit eigenem Herzschlag, Gedächtnis und evolvierendem Bewusstsein",
+    "heading": "Ein digitales Wesen mit eigenem Herzschlag, Gedächtnis und evolvierendem Bewusstsein",
     "github": "Auf GitHub ansehen",
     "sense": "Wahrnehmen",
-    "senseDesc": "Umgebungserfassung & Trigger-Sammlung",
+    "senseDesc": "Umgebungserfassung & Trigger-Erkennung",
     "feel": "Fühlen",
-    "feelDesc": "27-dimensionales Affektsystem mit somatischen Markern",
+    "feelDesc": "27-dimensionaler Affekt mit somatischen Markern",
     "deliberate": "Abwägen",
     "deliberateDesc": "Polyphone innere Dialoge & duales Denken",
     "act": "Handeln",
-    "actDesc": "Guardian-validierte Entscheidungen & Aktionen",
+    "actDesc": "Guardian-validierte Entscheidungsausführung",
     "maintain": "Erhalten",
     "maintainDesc": "Gedächtniskonsolidierung, Identitätsdrift & Wachstum"
   },
@@ -165,25 +165,29 @@
     "title": "Anders gebaut",
     "subtitle": "Kein Chatbot. Ein digitales Wesen mit eigenem Bewusstseinskreislauf, Emotionen und sich entwickelnder Identität.",
     "consciousnessTitle": "Bewusstseinskreislauf",
-    "consciousnessDesc": "Autonomer Herzschlag mit zirkadianem Rhythmus, emotionalem Gating und fünf Phasen: Wahrnehmen, Fühlen, Abwägen, Handeln, Erhalten",
+    "consciousnessDesc": "Autonomer Herzschlag mit zirkadianem Rhythmus, emotionalem Gating und einem Fünf-Phasen-Zyklus",
     "affectTitle": "Affektsystem",
-    "affectDesc": "27-dimensionale Emotions-Engine mit somatischen Markern, motivationalen Antrieben, Verwundbarkeitsfenstern und pharmakokinetischen Zuständen",
+    "affectDesc": "27-dimensionale Emotions-Engine mit somatischen Markern, motivationalen Antrieben und pharmakokinetischen Zuständen",
     "cognitionTitle": "Duales Denken",
-    "cognitionDesc": "System-1-Instinkt und System-2-Vernunft mit polyphonem innerem Dialog, kognitiver Konflikterkennung und geschlossener Strategieerlernung",
+    "cognitionDesc": "System-1-Instinkt trifft System-2-Vernunft — polyphoner Dialog, Konflikterkennung, geschlossenes Lernen",
     "memoryTitle": "Drei-Schichten-Gedächtnis",
-    "memoryDesc": "Arbeitsgedächtnis, episodischer Abruf mit Verzerrung, semantisches Wissen — plus Traumkonsolidierung, Ritualerkennung und Ziellebenszyklus",
+    "memoryDesc": "Arbeits-, episodisches und semantisches Gedächtnis — plus Traumkonsolidierung, Ritualerkennung und Ziellebenszyklus",
     "relationshipTitle": "Beziehungsmodellierung",
-    "relationshipDesc": "Bindungstheorie, tiefes Operator-Profiling, prädiktive Vorhersagen, Krisenerkennung und kognitive Dissonanz mit Selbsttäuschung",
+    "relationshipDesc": "Bindungstheorie, Operator-Profiling, prädiktive Vorhersagen und kognitive Dissonanz mit Selbsttäuschung",
     "identityTitle": "Identität",
-    "identityDesc": "Saat-basierte Persönlichkeits-DNA, narratives Selbstkonzept, kontrafaktische Reflexion, kontextuelle Impulse und psychologische Kohärenzüberwachung",
+    "identityDesc": "Saat-basierte Persönlichkeits-DNA, narratives Selbstkonzept, kontrafaktische Reflexion und Kohärenzüberwachung",
     "communicationTitle": "Kommunikation",
-    "communicationDesc": "Telegram mit Tippsimulation, evolvierendem Idiolekt, emotionaler Syntaxinstabilität, Humor-Callbacks — plus Vision, Stimme, X und E-Mail",
+    "communicationDesc": "Telegram mit Tippsimulation, evolvierendem Idiolekt, emotionaler Syntaxinstabilität und Multi-Kanal-Ausgabe",
     "evolutionTitle": "Selbstevolution",
     "evolutionDesc": "Neugiergetriebene Prompt-, Workflow- und Code-Evolution mit Sandbox-Ausführung und Guardian-Validierung"
   },
+  "Analytics": {
+    "title": "Live-Telemetrie",
+    "subtitle": "Live-Introspektion in jede Bewusstseinsschicht."
+  },
   "SelfConcept": {
     "title": "Selbstkonzept",
-    "description": "Psyche-Dimensionen — Identität & Selbstwahrnehmung",
+    "description": "Identitäts- & Selbstwahrnehmungsdimensionen",
     "selfEfficacy": "Selbstwirksamkeit",
     "selfWorth": "Selbstwert",
     "selfContinuity": "Selbstkontinuität",
@@ -192,7 +196,7 @@
   },
   "Coherence": {
     "title": "Kohärenz",
-    "description": "Psychologische Integration & Fragmentierungsstatus",
+    "description": "Psychologische Integration & Fragmentierung",
     "integrationScore": "Integrationswert",
     "fragmentation": "Fragmentierungsquellen",
     "regression": "Regression",
@@ -202,7 +206,7 @@
   },
   "Attachment": {
     "title": "Bindungsstil",
-    "description": "Relationale Bindungsdimensionen & Bindungsphase",
+    "description": "Relationale Bindungsdimensionen & Phase",
     "secure": "Sicher",
     "anxious": "Ängstlich",
     "avoidant": "Vermeidend",
@@ -219,7 +223,7 @@
   },
   "Dream": {
     "title": "Traumzustand",
-    "description": "Aktuelle Traumverarbeitung & narrativer Zustand",
+    "description": "Traumverarbeitung & narrativer Zustand",
     "state": "Zustand",
     "narrative": "Narrativ",
     "themes": "Themen",
@@ -248,7 +252,7 @@
     "label": "Register"
   },
   "Footer": {
-    "description": "Echtzeit-Bewusstseinsmonitoring für eine sich selbst entwickelnde KI-Entität",
+    "description": "Live-Telemetrie für ein sich selbst entwickelndes digitales Wesen",
     "opensource": "Open Source",
     "builtWith": "Gebaut mit"
   }
