@@ -112,7 +112,7 @@ export function FeaturesSection() {
 								<AnimatePresence mode="wait" initial={false}>
 									{hoveredIndex === idx && (
 										<motion.span
-											className="absolute inset-0 block h-full w-full rounded-2xl border bg-primary/6 border-primary/20 dark:border-primary/10 dark:bg-primary/3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-xl"
+											className="absolute inset-0 block h-full w-full rounded-2xl border bg-primary/6 border-primary/20 dark:border-primary/30 dark:bg-primary/6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-xl"
 											layoutId="featureHover"
 											key={idx}
 											initial={{ opacity: 0 }}

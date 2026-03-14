@@ -81,11 +81,11 @@ export default async function HomePage({ searchParams }: PageProps) {
 					</FadeIn>
 
 					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-						<Suspense fallback={<DriveSkeleton />}>
-							<DriveSection />
-						</Suspense>
 						<Suspense fallback={<SomaticRadarSkeleton />}>
 							<SomaticSection range={range} />
+						</Suspense>
+						<Suspense fallback={<DriveSkeleton />}>
+							<DriveSection />
 						</Suspense>
 					</FadeIn>
 
