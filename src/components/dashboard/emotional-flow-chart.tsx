@@ -42,10 +42,15 @@ export function EmotionalFlowChart({ data }: EmotionalFlowChartProps) {
 
   const chartData = useMemo(
     () =>
-      data.map((point) => ({
-        time: format(new Date(point.timestamp), "HH:mm"),
-        ...point.emotions,
-      })),
+      data.map((point) => {
+        const entry: Record<string, string | number> = {
+          time: format(new Date(point.timestamp), "HH:mm"),
+        }
+        for (const key of EMOTION_KEYS) {
+          entry[key] = Math.round(point.emotions[key] * 100)
+        }
+        return entry
+      }),
     [data]
   )
 
@@ -70,11 +75,11 @@ export function EmotionalFlowChart({ data }: EmotionalFlowChartProps) {
               tick={{ fontSize: 12 }}
             />
             <YAxis
-              domain={[0, 1]}
+              domain={[0, 100]}
               tickLine={false}
               axisLine={false}
-              tickFormatter={(v) => v.toFixed(1)}
-              width={35}
+              tickFormatter={(v) => `${v}%`}
+              width={40}
               tick={{ fontSize: 12 }}
             />
             <ChartTooltip
