@@ -14,17 +14,20 @@ const STAT_KEYS = [
 	"phases",
 ] as const;
 
-const staggerContainer: Variants = {
-	hidden: {},
-	visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const statItem: Variants = {
-	hidden: { opacity: 0, y: 16 },
+const containerVariants: Variants = {
+	hidden: { opacity: 0, y: 24 },
 	visible: {
 		opacity: 1,
 		y: 0,
-		transition: { duration: 0.5, ease: EASE },
+		transition: { duration: 0.5, ease: EASE, staggerChildren: 0.08, delayChildren: 0.2 },
+	},
+};
+
+const statItem: Variants = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: { duration: 0.4, ease: EASE },
 	},
 };
 
@@ -40,7 +43,7 @@ export function StatsSection() {
 					ref={ref}
 					initial="hidden"
 					animate={inView ? "visible" : "hidden"}
-					variants={staggerContainer}
+					variants={containerVariants}
 					className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border/50 bg-border/50 sm:grid-cols-3 lg:grid-cols-5"
 				>
 					{STAT_KEYS.map((key) => (
