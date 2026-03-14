@@ -8,7 +8,7 @@ export function AnalyticsHeader() {
 			<h2 className="text-3xl md:text-4xl lg:text-5xl text-foreground">
 				{t("title")}
 			</h2>
-			<p className="text-base md:text-lg lg:text-xl font-light text-muted-foreground">
+			<p className="text-base lg:text-lg font-light text-muted-foreground">
 				{t("subtitle")}
 			</p>
 		</div>
