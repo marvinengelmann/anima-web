@@ -19,9 +19,9 @@ export function CognitiveStatusCard({ data }: CognitiveStatusCardProps) {
   const t = useTranslations("Cognitive")
 
   const bars = [
-    { label: t("clarity"), value: data.cognitiveClarity, color: "var(--chart-2)" },
-    { label: t("fatigue"), value: data.cognitiveFatigue, color: "var(--chart-6)" },
-    { label: t("calibration"), value: data.confidenceCalibration, color: "var(--chart-3)" },
+    { label: t("clarity"), value: data.cognitiveClarity, color: "var(--chart-10)" },
+    { label: t("fatigue"), value: data.cognitiveFatigue, color: "var(--chart-5)" },
+    { label: t("calibration"), value: data.confidenceCalibration, color: "var(--chart-1)" },
   ]
 
   return (

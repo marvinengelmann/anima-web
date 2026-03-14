@@ -43,9 +43,9 @@ export function DriveChart({ data }: DriveChartProps) {
 
   const chartConfig: ChartConfig = useMemo(
     () => ({
-      satiation: { label: t("satiation"), color: "var(--chart-3)" },
+      satiation: { label: t("satiation"), color: "var(--chart-16)" },
       frustration: { label: t("frustration"), color: "var(--chart-6)" },
-      salience: { label: t("salience"), color: "var(--chart-2)" },
+      salience: { label: t("salience"), color: "var(--chart-5)" },
     }),
     [t]
   )

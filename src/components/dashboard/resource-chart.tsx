@@ -37,7 +37,7 @@ export function ResourceChart({ data, bare = false }: ResourceChartProps) {
       },
       socialBattery: {
         label: t("socialBattery"),
-        color: "var(--chart-8)",
+        color: "var(--chart-14)",
       },
     }),
     [t]
@@ -64,13 +64,13 @@ export function ResourceChart({ data, bare = false }: ResourceChartProps) {
       {lastPoint && (
         <div className="flex gap-4 text-sm">
           <div className="flex items-center gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "oklch(0.80 0.20 90)" }} />
+            <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "var(--chart-4)" }} />
             <span className="font-mono text-xs tabular-nums">
               {(lastPoint.emotions.energy * 100).toFixed(0)}%
             </span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "oklch(0.68 0.20 300)" }} />
+            <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "var(--chart-14)" }} />
             <span className="font-mono text-xs tabular-nums">
               {(lastPoint.somatic.socialBattery * 100).toFixed(0)}%
             </span>

@@ -32,7 +32,7 @@ export function SecondaryEmotionsChart({ data }: SecondaryEmotionsChartProps) {
     for (const emotion of data) {
       config[emotion.name] = {
         label: t(emotion.name as never),
-        color: SECONDARY_COLORS[emotion.name] ?? "oklch(0.6 0.1 200)",
+        color: SECONDARY_COLORS[emotion.name] ?? "var(--chart-18)",
       }
     }
     return config
@@ -50,7 +50,7 @@ export function SecondaryEmotionsChart({ data }: SecondaryEmotionsChartProps) {
         label: t(e.name as never),
         level: Math.round(e.level * 100),
         isActive: e.isActive,
-        fill: SECONDARY_COLORS[e.name] ?? "oklch(0.6 0.1 200)",
+        fill: SECONDARY_COLORS[e.name] ?? "var(--chart-18)",
       })),
     [sorted, t]
   )

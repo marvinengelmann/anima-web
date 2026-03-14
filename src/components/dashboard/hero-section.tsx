@@ -14,7 +14,7 @@ export function HeroSection() {
 		<section className="relative overflow-hidden border-b border-border/50 bg-white dark:bg-background">
 			<div className="absolute inset-0 z-0">
 				<Waves
-					strokeColor="var(--color-taupe-500)"
+					strokeColor="var(--color-border)"
 					backgroundColor="transparent"
 					pointerSize={0.5}
 				/>
