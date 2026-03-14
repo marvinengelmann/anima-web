@@ -10,9 +10,30 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "Seed" })
 
+  const title = t("title")
+  const description = t("subtitle")
+  const url = locale === "en" ? "/seed" : `/${locale}/seed`
+
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: "/seed",
+        de: "/de/seed",
+      },
+    },
+    openGraph: {
+      title: `${title} | ANIMA`,
+      description,
+      url,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ANIMA`,
+      description,
+    },
   }
 }
 

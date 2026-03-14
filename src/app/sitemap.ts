@@ -16,5 +16,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${BASE_URL}/seed`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/seed`,
+          de: `${BASE_URL}/de/seed`,
+        },
+      },
+    },
   ]
 }
