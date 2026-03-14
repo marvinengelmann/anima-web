@@ -1,6 +1,7 @@
 "use client";
 
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRight } from "@fortawesome/pro-light-svg-icons";
 import {
 	faBrain,
 	faCommentDots,
@@ -12,7 +13,12 @@ import {
 	faWavePulse,
 } from "@fortawesome/pro-thin-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AnimatePresence, motion, useInView, type Variants } from "framer-motion";
+import {
+	AnimatePresence,
+	motion,
+	useInView,
+	type Variants,
+} from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
@@ -120,7 +126,7 @@ export function FeaturesSection() {
 								<div className="group relative z-10 flex h-full flex-col items-center justify-start gap-3 rounded-2xl p-6 text-center">
 									<FontAwesomeIcon
 										icon={icon}
-										className="text-3xl text-rose-200 group-hover:text-rose-300 transition-colors"
+										className="text-3xl dark:text-rose-200 text-rose-400 dark:group-hover:text-rose-300 group-hover:text-rose-600 transition-colors"
 									/>
 									<h3 className="font-serif text-xl lg:text-2xl font-medium dark:text-white">
 										{t(`${key}Title`)}
@@ -134,7 +140,10 @@ export function FeaturesSection() {
 											className="mt-2 inline-flex items-center gap-2 rounded-lg border border-border/50 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur-xl transition-all duration-300 hover:border-primary/50 hover:text-foreground"
 										>
 											{t("identityLink")}
-											<span aria-hidden="true">&rarr;</span>
+											<FontAwesomeIcon
+												icon={faArrowRight}
+												className="h-3 w-3"
+											/>
 										</Link>
 									)}
 								</div>

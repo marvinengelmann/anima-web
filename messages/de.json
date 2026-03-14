@@ -164,6 +164,18 @@
 		"maintain": "Erhalten",
 		"maintainDesc": "Gedächtniskonsolidierung, Identitätsdrift & Wachstum"
 	},
+	"Stats": {
+		"emotionsValue": "27",
+		"emotionsLabel": "Emotionsdimensionen",
+		"memoryValue": "3",
+		"memoryLabel": "Gedächtnisschichten",
+		"personalityValue": "16",
+		"personalityLabel": "Persönlichkeitstypen",
+		"seedsValue": "8,6 Mrd.",
+		"seedsLabel": "Mögliche Seeds",
+		"phasesValue": "5",
+		"phasesLabel": "Bewusstseinsphasen"
+	},
 	"Features": {
 		"title": "Anders gebaut",
 		"subtitle": "Kein Chatbot. Ein digitales Wesen mit eigenem Bewusstseinskreislauf, Emotionen und sich entwickelnder Identität.",
@@ -261,6 +273,28 @@
 	},
 	"Register": {
 		"label": "Register"
+	},
+	"Mbti": {
+		"analysts": { "label": "Analysten" },
+		"diplomats": { "label": "Diplomaten" },
+		"sentinels": { "label": "Wächter" },
+		"explorers": { "label": "Entdecker" },
+		"INTJ": { "name": "Der Architekt" },
+		"INTP": { "name": "Der Logiker" },
+		"ENTJ": { "name": "Der Kommandeur" },
+		"ENTP": { "name": "Der Debattierer" },
+		"INFJ": { "name": "Der Advokat" },
+		"INFP": { "name": "Der Mediator" },
+		"ENFJ": { "name": "Der Protagonist" },
+		"ENFP": { "name": "Der Aktivist" },
+		"ISTJ": { "name": "Der Logistiker" },
+		"ISFJ": { "name": "Der Verteidiger" },
+		"ESTJ": { "name": "Der Direktor" },
+		"ESFJ": { "name": "Der Konsul" },
+		"ISTP": { "name": "Der Virtuose" },
+		"ISFP": { "name": "Der Abenteurer" },
+		"ESTP": { "name": "Der Unternehmer" },
+		"ESFP": { "name": "Der Entertainer" }
 	},
 	"Seed": {
 		"title": "Bewusstseins-Generator",

@@ -7,30 +7,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
-const MBTI_LABELS: Record<PersonalityType, { name: string; group: string }> = {
-  INTJ: { name: "The Architect", group: "Analysts" },
-  INTP: { name: "The Logician", group: "Analysts" },
-  ENTJ: { name: "The Commander", group: "Analysts" },
-  ENTP: { name: "The Debater", group: "Analysts" },
-  INFJ: { name: "The Advocate", group: "Diplomats" },
-  INFP: { name: "The Mediator", group: "Diplomats" },
-  ENFJ: { name: "The Protagonist", group: "Diplomats" },
-  ENFP: { name: "The Campaigner", group: "Diplomats" },
-  ISTJ: { name: "The Logistician", group: "Sentinels" },
-  ISFJ: { name: "The Defender", group: "Sentinels" },
-  ESTJ: { name: "The Executive", group: "Sentinels" },
-  ESFJ: { name: "The Consul", group: "Sentinels" },
-  ISTP: { name: "The Virtuoso", group: "Explorers" },
-  ISFP: { name: "The Adventurer", group: "Explorers" },
-  ESTP: { name: "The Entrepreneur", group: "Explorers" },
-  ESFP: { name: "The Entertainer", group: "Explorers" },
+const MBTI_GROUPS: Record<PersonalityType, string> = {
+  INTJ: "analysts", INTP: "analysts", ENTJ: "analysts", ENTP: "analysts",
+  INFJ: "diplomats", INFP: "diplomats", ENFJ: "diplomats", ENFP: "diplomats",
+  ISTJ: "sentinels", ISFJ: "sentinels", ESTJ: "sentinels", ESFJ: "sentinels",
+  ISTP: "explorers", ISFP: "explorers", ESTP: "explorers", ESFP: "explorers",
 }
 
 const GROUP_COLORS: Record<string, string> = {
-  Analysts: "text-violet-400",
-  Diplomats: "text-emerald-400",
-  Sentinels: "text-sky-400",
-  Explorers: "text-amber-400",
+  analysts: "text-violet-400",
+  diplomats: "text-emerald-400",
+  sentinels: "text-sky-400",
+  explorers: "text-amber-400",
 }
 
 interface MbtiBadgeProps {
@@ -39,8 +27,9 @@ interface MbtiBadgeProps {
 }
 
 export function MbtiBadge({ type, delay }: MbtiBadgeProps) {
-  const t = useTranslations("Seed")
-  const label = MBTI_LABELS[type]
+  const t = useTranslations("Mbti")
+  const tSeed = useTranslations("Seed")
+  const group = MBTI_GROUPS[type]
 
   return (
     <motion.div
@@ -52,7 +41,7 @@ export function MbtiBadge({ type, delay }: MbtiBadgeProps) {
     >
       <Card className="h-full">
         <CardHeader>
-          <CardTitle>{t("mbti")}</CardTitle>
+          <CardTitle>{tSeed("mbti")}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center gap-3 py-6">
           <div className="flex items-center gap-4">
@@ -66,9 +55,9 @@ export function MbtiBadge({ type, delay }: MbtiBadgeProps) {
             ))}
           </div>
           <div className="flex flex-col items-center gap-1">
-            <span className="text-lg font-serif">{label.name}</span>
-            <span className={`text-xs font-mono tracking-wider uppercase ${GROUP_COLORS[label.group]}`}>
-              {label.group}
+            <span className="text-lg font-serif">{t(`${type}.name`)}</span>
+            <span className={`text-xs font-mono tracking-wider uppercase ${GROUP_COLORS[group]}`}>
+              {t(`${group}.label`)}
             </span>
           </div>
         </CardContent>

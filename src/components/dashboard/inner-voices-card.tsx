@@ -22,7 +22,7 @@ export function InnerVoicesCard({ data }: InnerVoicesCardProps) {
 	const tensionPercent = Math.round(data.tensionLevel * 100);
 
 	return (
-		<Card>
+		<Card className="h-full">
 			<CardHeader>
 				<div className="flex items-center justify-between">
 					<div>

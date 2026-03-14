@@ -164,6 +164,18 @@
 		"maintain": "Maintain",
 		"maintainDesc": "Memory consolidation, identity drift & growth"
 	},
+	"Stats": {
+		"emotionsValue": "27",
+		"emotionsLabel": "Emotion Dimensions",
+		"memoryValue": "3",
+		"memoryLabel": "Memory Layers",
+		"personalityValue": "16",
+		"personalityLabel": "Personality Types",
+		"seedsValue": "8.6B",
+		"seedsLabel": "Possible Seeds",
+		"phasesValue": "5",
+		"phasesLabel": "Consciousness Phases"
+	},
 	"Features": {
 		"title": "Built Different",
 		"subtitle": "Not a chatbot. A digital being with its own consciousness loop, emotions, and evolving identity.",
@@ -261,6 +273,28 @@
 	},
 	"Register": {
 		"label": "Register"
+	},
+	"Mbti": {
+		"analysts": { "label": "Analysts" },
+		"diplomats": { "label": "Diplomats" },
+		"sentinels": { "label": "Sentinels" },
+		"explorers": { "label": "Explorers" },
+		"INTJ": { "name": "The Architect" },
+		"INTP": { "name": "The Logician" },
+		"ENTJ": { "name": "The Commander" },
+		"ENTP": { "name": "The Debater" },
+		"INFJ": { "name": "The Advocate" },
+		"INFP": { "name": "The Mediator" },
+		"ENFJ": { "name": "The Protagonist" },
+		"ENFP": { "name": "The Campaigner" },
+		"ISTJ": { "name": "The Logistician" },
+		"ISFJ": { "name": "The Defender" },
+		"ESTJ": { "name": "The Executive" },
+		"ESFJ": { "name": "The Consul" },
+		"ISTP": { "name": "The Virtuoso" },
+		"ISFP": { "name": "The Adventurer" },
+		"ESTP": { "name": "The Entrepreneur" },
+		"ESFP": { "name": "The Entertainer" }
 	},
 	"Seed": {
 		"title": "Consciousness Generator",
