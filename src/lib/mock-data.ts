@@ -24,10 +24,6 @@ function noise(amplitude: number): number {
 }
 
 const RANGE_CONFIG: Record<TimeRange, { points: number; intervalMs: number }> = {
-  "1h":  { points: 60,  intervalMs: 60 * 1000 },
-  "3h":  { points: 60,  intervalMs: 3 * 60 * 1000 },
-  "6h":  { points: 72,  intervalMs: 5 * 60 * 1000 },
-  "12h": { points: 72,  intervalMs: 10 * 60 * 1000 },
   "24h": { points: 96,  intervalMs: 15 * 60 * 1000 },
   "48h": { points: 96,  intervalMs: 30 * 60 * 1000 },
   "7d":  { points: 168, intervalMs: 60 * 60 * 1000 },
@@ -239,7 +235,7 @@ const REASON_DETAILS: Record<string, string[]> = {
 
 export function generateEvents(range: TimeRange): EmotionEvent[] {
   const countMap: Record<TimeRange, number> = {
-    "1h": 8, "3h": 15, "6h": 20, "12h": 30, "24h": 45, "48h": 60,
+    "24h": 45, "48h": 60,
     "7d": 80, "14d": 100, "30d": 120, "90d": 150, "6mo": 180, "1y": 200, "all": 250,
   }
   const count = countMap[range]

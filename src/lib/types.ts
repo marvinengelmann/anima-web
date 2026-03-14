@@ -97,10 +97,10 @@ export interface TimeSeriesPoint {
   momentum: MomentumVector
 }
 
-export type TimeRange = "1h" | "3h" | "6h" | "12h" | "24h" | "48h" | "7d" | "14d" | "30d" | "90d" | "6mo" | "1y" | "all"
+export type TimeRange = "24h" | "48h" | "7d" | "14d" | "30d" | "90d" | "6mo" | "1y" | "all"
 
 export const TIME_RANGES: TimeRange[] = [
-  "1h", "3h", "6h", "12h", "24h", "48h", "7d", "14d", "30d", "90d", "6mo", "1y", "all",
+  "24h", "48h", "7d", "14d", "30d", "90d", "6mo", "1y", "all",
 ]
 
 export const EMOTION_KEYS: (keyof EmotionalState)[] = [

@@ -17,29 +17,36 @@ export function DashboardHeader({ range }: DashboardHeaderProps) {
 
 	return (
 		<header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-			<div className="container flex items-center gap-4 py-2">
-				<div className="flex items-center gap-2">
-					<div className="h-2 w-2 rounded-full bg-primary" />
-					<span className="text-base tracking-widest">ANIMA</span>
-				</div>
-				<TimeRangeSelector value={range} />
-				<div className="ml-auto flex items-center gap-3">
-					<div className="flex items-center gap-1.5">
-						<div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
-						<span className="text-[11px] text-muted-foreground">
-							{t("liveIndicator")}
-						</span>
+			<div className="container flex flex-col gap-2 py-2">
+				<div className="flex items-center justify-between">
+					<div className="flex items-center gap-2">
+						<div className="h-2 w-2 rounded-full bg-primary" />
+						<span className="text-base tracking-widest">ANIMA</span>
 					</div>
-					<a
-						href="https://github.com/marvinengelmann/anima"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-muted-foreground transition-colors hover:text-foreground"
-					>
-						<FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
-					</a>
-					<ThemeToggle />
-					<LanguageSwitcher />
+					<div className="hidden sm:block">
+						<TimeRangeSelector value={range} />
+					</div>
+					<div className="flex items-center gap-3">
+						<div className="flex items-center gap-1.5">
+							<div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+							<span className="text-[11px] text-muted-foreground">
+								{t("liveIndicator")}
+							</span>
+						</div>
+						<a
+							href="https://github.com/marvinengelmann/anima"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-muted-foreground transition-colors hover:text-foreground"
+						>
+							<FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
+						</a>
+						<ThemeToggle />
+						<LanguageSwitcher />
+					</div>
+				</div>
+				<div className="flex justify-center sm:hidden">
+					<TimeRangeSelector value={range} />
 				</div>
 			</div>
 		</header>

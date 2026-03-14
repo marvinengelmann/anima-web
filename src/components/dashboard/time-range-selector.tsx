@@ -1,91 +1,85 @@
-"use client"
+"use client";
 
-import { useTranslations } from "next-intl"
-import { useRouter, usePathname } from "@/i18n/navigation"
-import { useSearchParams } from "next/navigation"
-import { type TimeRange } from "@/lib/types"
-import { faChevronDown, faClock } from "@fortawesome/pro-light-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEllipsis } from "@fortawesome/pro-light-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import type { TimeRange } from "@/lib/types";
 
-const RANGE_GROUPS = {
-  short: ["1h", "3h", "6h", "12h"] as TimeRange[],
-  medium: ["24h", "48h", "7d", "14d"] as TimeRange[],
-  long: ["30d", "90d", "6mo", "1y", "all"] as TimeRange[],
-}
+const QUICK_RANGES: TimeRange[] = ["24h", "7d", "30d", "all"];
+const MORE_RANGES: TimeRange[] = ["48h", "14d", "90d", "6mo", "1y"];
 
 interface TimeRangeSelectorProps {
-  value: TimeRange
+	value: TimeRange;
 }
 
 export function TimeRangeSelector({ value }: TimeRangeSelectorProps) {
-  const t = useTranslations("TimeRange")
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+	const t = useTranslations("TimeRange");
+	const router = useRouter();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
 
-  function handleChange(range: string) {
-    const params = new URLSearchParams(searchParams.toString())
-    params.set("range", range)
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-  }
+	function handleChange(range: string) {
+		const params = new URLSearchParams(searchParams.toString());
+		params.set("range", range);
+		router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+	}
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger id="time-range-trigger" className="flex items-center gap-1.5 rounded-md border border-border/50 bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:bg-muted/60">
-        <FontAwesomeIcon icon={faClock} className="h-3 w-3 text-muted-foreground" />
-        {t(value)}
-        <FontAwesomeIcon icon={faChevronDown} className="h-3 w-3 text-muted-foreground" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-36">
-        <DropdownMenuRadioGroup value={value} onValueChange={handleChange}>
-          <DropdownMenuGroup>
-            <DropdownMenuLabel className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              {t("short")}
-            </DropdownMenuLabel>
-            {RANGE_GROUPS.short.map((range) => (
-              <DropdownMenuRadioItem key={range} value={range} className="text-xs">
-                {t(range)}
-              </DropdownMenuRadioItem>
-            ))}
-          </DropdownMenuGroup>
+	const isMoreActive = MORE_RANGES.includes(value);
 
-          <DropdownMenuSeparator />
-
-          <DropdownMenuGroup>
-            <DropdownMenuLabel className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              {t("medium")}
-            </DropdownMenuLabel>
-            {RANGE_GROUPS.medium.map((range) => (
-              <DropdownMenuRadioItem key={range} value={range} className="text-xs">
-                {t(range)}
-              </DropdownMenuRadioItem>
-            ))}
-          </DropdownMenuGroup>
-
-          <DropdownMenuSeparator />
-
-          <DropdownMenuGroup>
-            <DropdownMenuLabel className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              {t("long")}
-            </DropdownMenuLabel>
-            {RANGE_GROUPS.long.map((range) => (
-              <DropdownMenuRadioItem key={range} value={range} className="text-xs">
-                {t(range)}
-              </DropdownMenuRadioItem>
-            ))}
-          </DropdownMenuGroup>
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+	return (
+		<div className="flex items-center gap-1">
+			{QUICK_RANGES.map((range) => (
+				<button
+					type="button"
+					key={range}
+					onClick={() => handleChange(range)}
+					className={`cursor-pointer rounded-md px-2 py-1 text-xs font-medium transition-colors ${
+						value === range
+							? "bg-taupe-800 text-taupe-50"
+							: "text-muted-foreground hover:bg-taupe-900 hover:text-foreground"
+					}`}
+				>
+					{t(range)}
+				</button>
+			))}
+			<DropdownMenu>
+				<DropdownMenuTrigger
+					id="time-range-more-trigger"
+					className={`flex items-center justify-center rounded-md px-2 py-1 text-xs transition-colors ${
+						isMoreActive
+							? "bg-primary text-primary-foreground"
+							: "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+					}`}
+				>
+					{isMoreActive ? (
+						t(value)
+					) : (
+						<FontAwesomeIcon icon={faEllipsis} className="h-3 w-3" />
+					)}
+				</DropdownMenuTrigger>
+				<DropdownMenuContent align="center" className="w-28">
+					<DropdownMenuRadioGroup value={value} onValueChange={handleChange}>
+						{MORE_RANGES.map((range) => (
+							<DropdownMenuRadioItem
+								key={range}
+								value={range}
+								className="text-xs"
+							>
+								{t(range)}
+							</DropdownMenuRadioItem>
+						))}
+					</DropdownMenuRadioGroup>
+				</DropdownMenuContent>
+			</DropdownMenu>
+		</div>
+	);
 }
