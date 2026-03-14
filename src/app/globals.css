@@ -166,6 +166,11 @@
   }
 }
 
+@keyframes world-glow {
+  0%, 100% { opacity: 0.06; transform: scale(1); }
+  50% { opacity: 0.14; transform: scale(1.1); }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
