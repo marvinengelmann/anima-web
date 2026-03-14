@@ -3,6 +3,7 @@
 import { faArrowLeft, faDice, faLink } from "@fortawesome/pro-light-svg-icons"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Logo } from "@/components/logo"
 import { AnimatePresence, motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useRef, useState } from "react"
@@ -90,8 +91,7 @@ export function ConsciousnessGenerator({ initialSeed }: ConsciousnessGeneratorPr
         <div className="container flex items-center justify-between py-2">
           <Link href="/" className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground">
             <FontAwesomeIcon icon={faArrowLeft} className="h-3.5 w-3.5" />
-            <div className="h-2 w-2 rounded-full bg-primary" />
-            <span className="text-base tracking-widest">ANIMA</span>
+            <Logo className="h-10 text-black dark:text-white" />
           </Link>
           <div className="flex items-center gap-3">
             <a

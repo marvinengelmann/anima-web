@@ -4,6 +4,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faDna } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslations } from "next-intl";
+import { Logo } from "@/components/logo";
 import { Link } from "@/i18n/navigation";
 import type { TimeRange } from "@/lib/types";
 import { LanguageSwitcher } from "./language-switcher";
@@ -21,10 +22,7 @@ export function DashboardHeader({ range }: DashboardHeaderProps) {
 		<header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
 			<div className="container flex flex-col gap-2 py-2">
 				<div className="flex items-center justify-between">
-					<div className="flex items-center gap-2">
-						<div className="h-2 w-2 rounded-full bg-primary" />
-						<span className="text-base tracking-widest">ANIMA</span>
-					</div>
+					<Logo className="h-10 text-black dark:text-white" />
 					<div className="hidden sm:block">
 						<TimeRangeSelector value={range} />
 					</div>

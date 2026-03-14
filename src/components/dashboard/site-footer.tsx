@@ -1,6 +1,7 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslations } from "next-intl";
+import { Logo } from "@/components/logo";
 
 export function SiteFooter() {
 	const t = useTranslations("Footer");
@@ -10,10 +11,7 @@ export function SiteFooter() {
 			<div className="container">
 				<div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
 					<div className="flex flex-col items-center gap-1 sm:items-start">
-						<div className="flex items-center gap-2">
-							<div className="h-2 w-2 rounded-full bg-primary" />
-							<span className="text-lg tracking-widest">ANIMA</span>
-						</div>
+						<Logo className="h-11 text-primary" />
 						<p className="font-serif italic text-lg text-muted-foreground tracking-wide">
 							{t("description")}
 						</p>
