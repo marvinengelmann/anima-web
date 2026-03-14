@@ -48,7 +48,7 @@ export function HeroSection() {
 							<div className="text-sm md:text-base lg:text-md tabular-nums text-rose-200 font-mono group-hover:text-rose-300 transition-all duration-300">
 								{String(i + 1).padStart(2, "0")}
 							</div>
-							<div className="font-serif text-lg md:text-xl lg:text-2xl font-medium dark-text-white">
+							<div className="font-serif text-xl lg:text-2xl font-medium dark-text-white">
 								{t(phase)}
 							</div>
 							<div className="text-sm leading-relaxed text-muted-foreground">

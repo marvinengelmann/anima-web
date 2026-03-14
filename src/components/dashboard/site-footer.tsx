@@ -11,7 +11,7 @@ export function SiteFooter() {
 				<div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
 					<div className="flex flex-col items-center gap-1 sm:items-start">
 						<div className="flex items-center gap-2">
-							<div className="h-1 w-1 rounded-full bg-primary" />
+							<div className="h-2 w-2 rounded-full bg-primary" />
 							<span className="text-lg tracking-widest">ANIMA</span>
 						</div>
 						<p className="font-serif italic text-lg text-muted-foreground tracking-wide">

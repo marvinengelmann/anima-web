@@ -46,7 +46,9 @@
 		"breathing": "Breathing",
 		"gravity": "Gravity",
 		"openness": "Openness",
-		"socialBattery": "Social Battery"
+		"socialBattery": "Social Battery",
+		"current": "Current",
+		"average": "Average"
 	},
 	"Drives": {
 		"title": "Drive System",
@@ -83,7 +85,8 @@
 		"anger": "Anger",
 		"nostalgia": "Nostalgia",
 		"active": "Active",
-		"latent": "Latent"
+		"latent": "Latent",
+		"intensity": "Intensity"
 	},
 	"Momentum": {
 		"title": "Emotional Momentum",

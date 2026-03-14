@@ -84,7 +84,7 @@ export function FeaturesSection() {
 										icon={icon}
 										className="text-3xl text-rose-200 group-hover:text-rose-300 transition-colors"
 									/>
-									<h3 className="font-serif text-lg md:text-xl lg:text-2xl font-medium dark:text-white">
+									<h3 className="font-serif text-xl lg:text-2xl font-medium dark:text-white">
 										{t(`${key}Title`)}
 									</h3>
 									<p className="text-sm leading-relaxed text-muted-foreground">

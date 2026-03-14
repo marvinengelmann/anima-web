@@ -1,79 +1,88 @@
-"use client"
+"use client";
 
-import { useTranslations } from "next-intl"
+import { useTranslations } from "next-intl";
+import { Badge } from "@/components/ui/badge";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import type { PolyphonyState } from "@/lib/types"
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import type { PolyphonyState } from "@/lib/types";
 
 interface InnerVoicesCardProps {
-  data: PolyphonyState
+	data: PolyphonyState;
 }
 
 export function InnerVoicesCard({ data }: InnerVoicesCardProps) {
-  const t = useTranslations("InnerVoices")
+	const t = useTranslations("InnerVoices");
 
-  const hasVoices = data.activeVoices.length > 0
-  const tensionPercent = Math.round(data.tensionLevel * 100)
+	const hasVoices = data.activeVoices.length > 0;
+	const tensionPercent = Math.round(data.tensionLevel * 100);
 
-  return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle>{t("title")}</CardTitle>
-            <CardDescription>{t("description")}</CardDescription>
-          </div>
-          {hasVoices && data.dominantVoice && (
-            <Badge variant="secondary" className="text-xs">
-              {t("dominant")}: {data.dominantVoice}
-            </Badge>
-          )}
-        </div>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {!hasVoices ? (
-          <p className="text-sm text-muted-foreground">{t("noDialog")}</p>
-        ) : (
-          <>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">{t("tension")}</span>
-                <span className="font-medium">{tensionPercent}%</span>
-              </div>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
-                <div
-                  className="h-full rounded-full transition-all"
-                  style={{
-                    width: `${tensionPercent}%`,
-                    backgroundColor: tensionPercent > 70 ? "var(--chart-6)" : tensionPercent > 40 ? "var(--chart-5)" : "var(--chart-3)",
-                  }}
-                />
-              </div>
-            </div>
+	return (
+		<Card>
+			<CardHeader>
+				<div className="flex items-center justify-between">
+					<div>
+						<CardTitle>{t("title")}</CardTitle>
+						<CardDescription>{t("description")}</CardDescription>
+					</div>
+					{hasVoices && data.dominantVoice && (
+						<Badge variant="secondary" className="text-xs">
+							{t("dominant")}: {data.dominantVoice}
+						</Badge>
+					)}
+				</div>
+			</CardHeader>
+			<CardContent className="space-y-4">
+				{!hasVoices ? (
+					<p className="text-sm text-muted-foreground">{t("noDialog")}</p>
+				) : (
+					<>
+						<div className="space-y-2">
+							<div className="flex items-center justify-between text-sm">
+								<span className="text-muted-foreground">{t("tension")}</span>
+								<span className="font-medium">{tensionPercent}%</span>
+							</div>
+							<div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
+								<div
+									className="h-full rounded-full transition-all"
+									style={{
+										width: `${tensionPercent}%`,
+										backgroundColor:
+											tensionPercent > 70
+												? "var(--chart-6)"
+												: tensionPercent > 40
+													? "var(--chart-5)"
+													: "var(--chart-3)",
+									}}
+								/>
+							</div>
+						</div>
 
-            <div className="space-y-2">
-              <span className="text-sm text-muted-foreground">{t("voices")}</span>
-              <div className="flex flex-wrap gap-1.5">
-                {data.activeVoices.map((voice) => (
-                  <Badge
-                    key={voice}
-                    variant={voice === data.dominantVoice ? "default" : "outline"}
-                    className="text-xs"
-                  >
-                    {voice}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </>
-        )}
-      </CardContent>
-    </Card>
-  )
+						<div className="space-y-2">
+							<span className="text-sm text-muted-foreground">
+								{t("voices")}
+							</span>
+							<div className="flex flex-wrap gap-1.5">
+								{data.activeVoices.map((voice) => (
+									<Badge
+										key={voice}
+										variant={
+											voice === data.dominantVoice ? "default" : "outline"
+										}
+										className="text-xs"
+									>
+										{voice}
+									</Badge>
+								))}
+							</div>
+						</div>
+					</>
+				)}
+			</CardContent>
+		</Card>
+	);
 }

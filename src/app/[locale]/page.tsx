@@ -8,7 +8,6 @@ import { AfterglowSection } from "@/components/dashboard/sections/afterglow-sect
 import { AttachmentSection } from "@/components/dashboard/sections/attachment-section";
 import { CognitiveSection } from "@/components/dashboard/sections/cognitive-section";
 import { CoherenceSection } from "@/components/dashboard/sections/coherence-section";
-import { DreamSection } from "@/components/dashboard/sections/dream-section";
 import { DriveSection } from "@/components/dashboard/sections/drive-section";
 import { EmotionalFlowSection } from "@/components/dashboard/sections/emotional-flow-section";
 import { EventTimelineSection } from "@/components/dashboard/sections/event-timeline-section";
@@ -24,7 +23,6 @@ import {
 	AttachmentSkeleton,
 	CognitiveSkeleton,
 	CoherenceSkeleton,
-	DreamSkeleton,
 	DriveSkeleton,
 	EmotionalFlowSkeleton,
 	EventTimelineSkeleton,
@@ -71,19 +69,20 @@ export default async function HomePage({ searchParams }: PageProps) {
 						<Suspense fallback={<ResourceMomentumSkeleton />}>
 							<ResourceMomentumSection range={range} />
 						</Suspense>
-						<Suspense fallback={<DriveSkeleton />}>
-							<DriveSection />
-						</Suspense>
 					</div>
 
 					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+						<Suspense fallback={<DriveSkeleton />}>
+							<DriveSection />
+						</Suspense>
 						<Suspense fallback={<SomaticRadarSkeleton />}>
 							<SomaticSection range={range} />
 						</Suspense>
-						<Suspense fallback={<SecondarySkeleton />}>
-							<SecondarySection />
-						</Suspense>
 					</div>
+
+					<Suspense fallback={<SecondarySkeleton />}>
+						<SecondarySection />
+					</Suspense>
 
 					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
 						<Suspense fallback={<AttachmentSkeleton />}>
@@ -95,20 +94,16 @@ export default async function HomePage({ searchParams }: PageProps) {
 					</div>
 
 					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-						<Suspense fallback={<CoherenceSkeleton />}>
-							<CoherenceSection />
-						</Suspense>
+						<div className="flex flex-col gap-3">
+							<Suspense fallback={<CoherenceSkeleton />}>
+								<CoherenceSection />
+							</Suspense>
+							<Suspense fallback={<InnerVoicesSkeleton />}>
+								<InnerVoicesSection />
+							</Suspense>
+						</div>
 						<Suspense fallback={<CognitiveSkeleton />}>
 							<CognitiveSection />
-						</Suspense>
-					</div>
-
-					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-						<Suspense fallback={<InnerVoicesSkeleton />}>
-							<InnerVoicesSection />
-						</Suspense>
-						<Suspense fallback={<DreamSkeleton />}>
-							<DreamSection />
 						</Suspense>
 					</div>
 
