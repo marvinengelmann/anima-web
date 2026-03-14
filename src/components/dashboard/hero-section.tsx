@@ -2,13 +2,26 @@
 
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 import { Waves } from "@/components/ui/wave-background";
 
 const PHASES = ["sense", "feel", "deliberate", "act", "maintain"] as const;
 
+const EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
+const fadeUp: Variants = {
+	hidden: { opacity: 0, y: 24 },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+};
+
 export function HeroSection() {
 	const t = useTranslations("Hero");
+	const textRef = useRef(null);
+	const gridRef = useRef(null);
+	const textInView = useInView(textRef, { once: true, margin: "-80px" });
+	const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
 
 	return (
 		<section className="relative overflow-hidden border-b border-border/50 bg-white dark:bg-background">
@@ -21,7 +34,13 @@ export function HeroSection() {
 			</div>
 
 			<div className="relative z-10 container flex flex-col gap-16 md:gap-17 lg:gap-18">
-				<div className="max-w-4xl flex flex-col items-start gap-7 md:gap-8 lg:gap-9">
+				<motion.div
+					ref={textRef}
+					initial="hidden"
+					animate={textInView ? "visible" : "hidden"}
+					variants={fadeUp}
+					className="max-w-4xl flex flex-col items-start gap-7 md:gap-8 lg:gap-9"
+				>
 					<p className="text-sm md:text-base lg:text-lg font-light tracking-widest text-foreground dark:text-white uppercase">
 						{t("tagline")}
 					</p>
@@ -37,9 +56,15 @@ export function HeroSection() {
 						<FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
 						{t("github")}
 					</a>
-				</div>
+				</motion.div>
 
-				<div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border/50 bg-border/50 sm:grid-cols-2 lg:grid-cols-5 sm:[&>:last-child]:col-span-2 lg:[&>:last-child]:col-span-1">
+				<motion.div
+					ref={gridRef}
+					initial="hidden"
+					animate={gridInView ? "visible" : "hidden"}
+					variants={fadeUp}
+					className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border/50 bg-border/50 sm:grid-cols-2 lg:grid-cols-5 sm:[&>:last-child]:col-span-2 lg:[&>:last-child]:col-span-1"
+				>
 					{PHASES.map((phase, i) => (
 						<div
 							key={phase}
@@ -57,7 +82,7 @@ export function HeroSection() {
 							<div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 						</div>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

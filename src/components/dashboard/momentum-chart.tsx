@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
+import { useRevealed } from "@/components/ui/fade-in";
 import {
 	Bar,
 	BarChart,
@@ -72,6 +73,7 @@ export function MomentumChart({
 	const t = useTranslations("Momentum");
 	const te = useTranslations("Emotions");
 	const tt = useTranslations("Triggers");
+	const revealed = useRevealed();
 
 	const chartConfig: ChartConfig = useMemo(
 		() => ({
@@ -112,7 +114,7 @@ export function MomentumChart({
 
 	const chart = (
 		<ChartContainer config={chartConfig} className="w-full h-60">
-			<BarChart data={chartData} accessibilityLayer>
+			<BarChart key={String(revealed)} data={chartData} accessibilityLayer>
 				<CartesianGrid vertical={false} strokeDasharray="3 3" />
 				<XAxis
 					dataKey="name"

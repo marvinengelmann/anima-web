@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
+import { useRevealed } from "@/components/ui/fade-in";
 import {
 	PolarAngleAxis,
 	PolarGrid,
@@ -30,6 +31,7 @@ interface SelfConceptChartProps {
 
 export function SelfConceptChart({ data }: SelfConceptChartProps) {
 	const t = useTranslations("SelfConcept");
+	const revealed = useRevealed();
 
 	const chartConfig: ChartConfig = useMemo(
 		() => ({
@@ -55,7 +57,7 @@ export function SelfConceptChart({ data }: SelfConceptChartProps) {
 			</CardHeader>
 			<CardContent>
 				<ChartContainer config={chartConfig} className="h-90 w-full">
-					<RadarChart data={chartData}>
+					<RadarChart key={String(revealed)} data={chartData}>
 						<PolarGrid gridType="circle" />
 						<PolarAngleAxis
 							dataKey="dimension"

@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
+import { useRevealed } from "@/components/ui/fade-in";
 import {
 	PolarAngleAxis,
 	PolarGrid,
@@ -31,6 +32,7 @@ interface AttachmentChartProps {
 
 export function AttachmentChart({ data }: AttachmentChartProps) {
 	const t = useTranslations("Attachment");
+	const revealed = useRevealed();
 
 	const chartConfig: ChartConfig = useMemo(
 		() => ({
@@ -65,7 +67,7 @@ export function AttachmentChart({ data }: AttachmentChartProps) {
 			</CardHeader>
 			<CardContent>
 				<ChartContainer config={chartConfig} className="h-90 w-full">
-					<RadarChart data={chartData}>
+					<RadarChart key={String(revealed)} data={chartData}>
 						<PolarGrid gridType="circle" />
 						<PolarAngleAxis
 							dataKey="dimension"

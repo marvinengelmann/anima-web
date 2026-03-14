@@ -11,6 +11,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { useRevealed } from "@/components/ui/fade-in";
 import {
 	type ChartConfig,
 	ChartContainer,
@@ -54,6 +55,8 @@ export function EmotionalFlowChart({ data }: EmotionalFlowChartProps) {
 		[data],
 	);
 
+	const revealed = useRevealed();
+
 	return (
 		<Card>
 			<CardHeader>
@@ -62,7 +65,7 @@ export function EmotionalFlowChart({ data }: EmotionalFlowChartProps) {
 			</CardHeader>
 			<CardContent>
 				<ChartContainer config={chartConfig} className="h-60 w-full">
-					<AreaChart data={chartData} accessibilityLayer>
+					<AreaChart key={String(revealed)} data={chartData} accessibilityLayer>
 						<CartesianGrid vertical={false} strokeDasharray="3 3" />
 						<XAxis
 							dataKey="time"

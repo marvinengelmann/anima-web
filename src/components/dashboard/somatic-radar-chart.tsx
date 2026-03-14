@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
+import { useRevealed } from "@/components/ui/fade-in";
 import {
 	PolarAngleAxis,
 	PolarGrid,
@@ -34,6 +35,7 @@ export function SomaticRadarChart({
 	average,
 }: SomaticRadarChartProps) {
 	const t = useTranslations("Somatic");
+	const revealed = useRevealed();
 
 	const chartConfig: ChartConfig = useMemo(
 		() => ({
@@ -61,7 +63,7 @@ export function SomaticRadarChart({
 			</CardHeader>
 			<CardContent>
 				<ChartContainer config={chartConfig} className="w-full h-90">
-					<RadarChart data={chartData}>
+					<RadarChart key={String(revealed)} data={chartData}>
 						<PolarGrid gridType="circle" />
 						<PolarAngleAxis
 							dataKey="dimension"

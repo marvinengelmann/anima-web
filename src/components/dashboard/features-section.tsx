@@ -9,13 +9,12 @@ import {
 	faHeart,
 	faSparkles,
 	faUsers,
-	faWaveformLines,
 	faWavePulse,
 } from "@fortawesome/pro-thin-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useInView, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const FEATURE_KEYS = [
 	"consciousness",
@@ -39,28 +38,66 @@ const FEATURE_ICONS: Record<(typeof FEATURE_KEYS)[number], IconDefinition> = {
 	evolution: faSparkles,
 };
 
+const EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
+const headerVariants: Variants = {
+	hidden: { opacity: 0, y: 24 },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
+};
+
+const staggerContainer: Variants = {
+	hidden: {},
+	visible: { transition: { staggerChildren: 0.06 } },
+};
+
+const featureItem: Variants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.4, ease: EASE },
+	},
+};
+
 export function FeaturesSection() {
 	const t = useTranslations("Features");
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+	const headerRef = useRef(null);
+	const gridRef = useRef(null);
+	const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+	const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
 
 	return (
 		<section className="border-b border-border/50">
 			<div className="container">
-				<div className="mx-auto max-w-2xl text-center flex flex-col gap-6">
+				<motion.div
+					ref={headerRef}
+					initial="hidden"
+					animate={headerInView ? "visible" : "hidden"}
+					variants={headerVariants}
+					className="mx-auto max-w-2xl text-center flex flex-col gap-6"
+				>
 					<h2 className="text-3xl md:text-4xl lg:text-5xl text-foreground">
 						{t("title")}
 					</h2>
-					<p className="text-base md:text-lg lg:text-xl font-light text-muted-foreground">
+					<p className="text-base lg:text-lg font-light text-muted-foreground">
 						{t("subtitle")}
 					</p>
-				</div>
+				</motion.div>
 
-				<div className="relative mt-14 grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+				<motion.div
+					ref={gridRef}
+					initial="hidden"
+					animate={gridInView ? "visible" : "hidden"}
+					variants={staggerContainer}
+					className="relative mt-14 grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+				>
 					{FEATURE_KEYS.map((key, idx) => {
 						const icon = FEATURE_ICONS[key];
 						return (
-							<div
+							<motion.div
 								key={key}
+								variants={featureItem}
 								className="group relative block h-full w-full cursor-pointer p-2"
 								onMouseEnter={() => setHoveredIndex(idx)}
 								onMouseLeave={() => setHoveredIndex(null)}
@@ -91,10 +128,10 @@ export function FeaturesSection() {
 										{t(`${key}Desc`)}
 									</p>
 								</div>
-							</div>
+							</motion.div>
 						);
 					})}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

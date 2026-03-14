@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
+import { useRevealed } from "@/components/ui/fade-in";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -27,6 +28,7 @@ interface DriveChartProps {
 
 export function DriveChart({ data }: DriveChartProps) {
 	const t = useTranslations("Drives");
+	const revealed = useRevealed();
 
 	const dominantLabel = useMemo(() => {
 		if (data.dominantDrive)
@@ -73,7 +75,7 @@ export function DriveChart({ data }: DriveChartProps) {
 			</CardHeader>
 			<CardContent>
 				<ChartContainer config={chartConfig} className="w-full h-90">
-					<RadarChart data={chartData}>
+					<RadarChart key={String(revealed)} data={chartData}>
 						<PolarGrid gridType="circle" />
 						<PolarAngleAxis
 							dataKey="drive"

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 import { Bar, BarChart, Cell, XAxis, YAxis } from "recharts";
 import { Badge } from "@/components/ui/badge";
+import { useRevealed } from "@/components/ui/fade-in";
 import {
 	Card,
 	CardContent,
@@ -26,6 +27,7 @@ interface SecondaryEmotionsChartProps {
 
 export function SecondaryEmotionsChart({ data }: SecondaryEmotionsChartProps) {
 	const t = useTranslations("Secondary");
+	const revealed = useRevealed();
 
 	const chartConfig: ChartConfig = useMemo(() => {
 		const config: ChartConfig = {};
@@ -78,7 +80,7 @@ export function SecondaryEmotionsChart({ data }: SecondaryEmotionsChartProps) {
 			</CardHeader>
 			<CardContent>
 				<ChartContainer config={chartConfig} className="h-60 w-full">
-					<BarChart data={chartData} accessibilityLayer>
+					<BarChart key={String(revealed)} data={chartData} accessibilityLayer>
 						<XAxis
 							dataKey="name"
 							tickLine={false}

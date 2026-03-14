@@ -33,6 +33,7 @@ import {
 	SomaticRadarSkeleton,
 	StatusBarSkeleton,
 } from "@/components/dashboard/skeletons";
+import { FadeIn } from "@/components/ui/fade-in";
 import { TIME_RANGES, type TimeRange } from "@/lib/types";
 
 interface PageProps {
@@ -55,45 +56,53 @@ export default async function HomePage({ searchParams }: PageProps) {
 
 			<section className="bg-muted">
 				<div className="container flex flex-col gap-3">
-					<AnalyticsHeader />
+					<FadeIn>
+						<AnalyticsHeader />
+					</FadeIn>
 
-					<Suspense fallback={<StatusBarSkeleton />}>
-						<StatusBarSection />
-					</Suspense>
+					<FadeIn>
+						<Suspense fallback={<StatusBarSkeleton />}>
+							<StatusBarSection />
+						</Suspense>
+					</FadeIn>
 
-					<Suspense fallback={<EmotionalFlowSkeleton />}>
-						<EmotionalFlowSection range={range} />
-					</Suspense>
+					<FadeIn>
+						<Suspense fallback={<EmotionalFlowSkeleton />}>
+							<EmotionalFlowSection range={range} />
+						</Suspense>
+					</FadeIn>
 
-					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
 						<Suspense fallback={<ResourceMomentumSkeleton />}>
 							<ResourceMomentumSection range={range} />
 						</Suspense>
-					</div>
+					</FadeIn>
 
-					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
 						<Suspense fallback={<DriveSkeleton />}>
 							<DriveSection />
 						</Suspense>
 						<Suspense fallback={<SomaticRadarSkeleton />}>
 							<SomaticSection range={range} />
 						</Suspense>
-					</div>
+					</FadeIn>
 
-					<Suspense fallback={<SecondarySkeleton />}>
-						<SecondarySection />
-					</Suspense>
+					<FadeIn>
+						<Suspense fallback={<SecondarySkeleton />}>
+							<SecondarySection />
+						</Suspense>
+					</FadeIn>
 
-					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
 						<Suspense fallback={<AttachmentSkeleton />}>
 							<AttachmentSection />
 						</Suspense>
 						<Suspense fallback={<SelfConceptSkeleton />}>
 							<SelfConceptSection />
 						</Suspense>
-					</div>
+					</FadeIn>
 
-					<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
 						<div className="flex flex-col gap-3">
 							<Suspense fallback={<CoherenceSkeleton />}>
 								<CoherenceSection />
@@ -105,11 +114,13 @@ export default async function HomePage({ searchParams }: PageProps) {
 						<Suspense fallback={<CognitiveSkeleton />}>
 							<CognitiveSection />
 						</Suspense>
-					</div>
+					</FadeIn>
 
-					<Suspense fallback={<AfterglowSkeleton />}>
-						<AfterglowSection range={range} />
-					</Suspense>
+					<FadeIn>
+						<Suspense fallback={<AfterglowSkeleton />}>
+							<AfterglowSection range={range} />
+						</Suspense>
+					</FadeIn>
 				</div>
 			</section>
 

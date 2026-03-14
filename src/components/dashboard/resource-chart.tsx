@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
+import { useRevealed } from "@/components/ui/fade-in";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
 	Card,
@@ -28,6 +29,7 @@ interface ResourceChartProps {
 
 export function ResourceChart({ data, bare = false }: ResourceChartProps) {
 	const t = useTranslations("Resources");
+	const revealed = useRevealed();
 
 	const chartConfig: ChartConfig = useMemo(
 		() => ({
@@ -88,7 +90,7 @@ export function ResourceChart({ data, bare = false }: ResourceChartProps) {
 
 	const chart = (
 		<ChartContainer config={chartConfig} className="h-60 w-full">
-			<AreaChart data={chartData} accessibilityLayer>
+			<AreaChart key={String(revealed)} data={chartData} accessibilityLayer>
 				<CartesianGrid vertical={false} strokeDasharray="3 3" />
 				<XAxis
 					dataKey="time"
