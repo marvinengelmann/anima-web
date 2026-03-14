@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl"
 import { useRouter, usePathname } from "@/i18n/navigation"
 import { useSearchParams } from "next/navigation"
 import { type TimeRange } from "@/lib/types"
-import { ChevronDown, Clock } from "lucide-react"
+import { faChevronDown, faClock } from "@fortawesome/pro-light-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,10 +41,10 @@ export function TimeRangeSelector({ value }: TimeRangeSelectorProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-1.5 rounded-md border border-border/50 bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:bg-muted/60">
-        <Clock className="h-3 w-3 text-muted-foreground" />
+      <DropdownMenuTrigger id="time-range-trigger" className="flex items-center gap-1.5 rounded-md border border-border/50 bg-muted/40 px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:bg-muted/60">
+        <FontAwesomeIcon icon={faClock} className="h-3 w-3 text-muted-foreground" />
         {t(value)}
-        <ChevronDown className="h-3 w-3 text-muted-foreground" />
+        <FontAwesomeIcon icon={faChevronDown} className="h-3 w-3 text-muted-foreground" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-36">
         <DropdownMenuRadioGroup value={value} onValueChange={handleChange}>

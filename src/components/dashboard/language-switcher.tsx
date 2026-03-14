@@ -2,7 +2,8 @@
 
 import { useLocale } from "next-intl"
 import { useRouter, usePathname } from "@/i18n/navigation"
-import { Globe } from "lucide-react"
+import { faGlobe } from "@fortawesome/pro-light-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export function LanguageSwitcher() {
   const locale = useLocale()
@@ -20,7 +21,7 @@ export function LanguageSwitcher() {
       onClick={handleToggle}
       className="flex items-center gap-1 rounded-md px-1.5 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground"
     >
-      <Globe className="h-3 w-3" />
+      <FontAwesomeIcon icon={faGlobe} className="h-3 w-3" />
       {locale.toUpperCase()}
     </button>
   )

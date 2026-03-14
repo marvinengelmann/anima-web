@@ -7,7 +7,10 @@ import { ThemeProvider } from "next-themes"
 import PlausibleProvider from "next-plausible"
 import { routing } from "@/i18n/routing"
 import { StructuredData } from "@/components/structured-data"
+import { config } from "@fortawesome/fontawesome-svg-core"
 import "../globals.css"
+
+config.autoAddCss = false
 
 const BASE_URL = "https://anima.engelmann.technology"
 

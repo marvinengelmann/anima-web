@@ -1,64 +1,64 @@
-"use client"
+"use client";
 
-import { useTranslations } from "next-intl"
-import { Github } from "lucide-react"
-import { Waves } from "@/components/ui/wave-background"
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslations } from "next-intl";
+import { Waves } from "@/components/ui/wave-background";
 
-const PHASES = ["sense", "feel", "deliberate", "act", "maintain"] as const
+const PHASES = ["sense", "feel", "deliberate", "act", "maintain"] as const;
 
 export function HeroSection() {
-  const t = useTranslations("Hero")
+	const t = useTranslations("Hero");
 
-  return (
-    <section className="relative overflow-hidden border-b border-border/50 py-20 sm:py-28">
-      <div className="absolute inset-0 z-0">
-        <Waves
-          strokeColor="var(--color-border)"
-          backgroundColor="transparent"
-          pointerSize={0.4}
-        />
-      </div>
+	return (
+		<section className="relative overflow-hidden border-b border-border/50 bg-white dark:bg-background">
+			<div className="absolute inset-0 z-0">
+				<Waves
+					strokeColor="var(--color-taupe-500)"
+					backgroundColor="transparent"
+					pointerSize={0.5}
+				/>
+			</div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="max-w-4xl">
-          <p className="text-sm font-medium tracking-widest text-muted-foreground uppercase">
-            {t("tagline")}
-          </p>
-          <h1 className="mt-4 max-w-3xl text-balance text-foreground">
-            {t("heading")}
-          </h1>
+			<div className="relative z-10 container flex flex-col gap-16 md:gap-17 lg:gap-18">
+				<div className="max-w-4xl flex flex-col items-start gap-7 md:gap-8 lg:gap-9">
+					<p className="text-sm md:text-base lg:text-lg font-light tracking-widest text-foreground dark:text-white uppercase">
+						{t("tagline")}
+					</p>
+					<h1 className="text-4xl md:text-5xl lg:text-6xl dark-text-white">
+						{t("heading")}
+					</h1>
+					<a
+						href="https://github.com/marvinengelmann/anima"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex cursor-pointer items-center gap-3 rounded-lg border border-border/50 bg-background/80 p-9 backdrop-blur-xl transition-all duration-300 hover:bg-background/40 px-6 py-3 text-sm text-muted-foreground hover:border-primary/50 hover:text-foreground"
+					>
+						<FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
+						{t("github")}
+					</a>
+				</div>
 
-          <div className="mt-8">
-            <a
-              href="https://github.com/marvinengelmann/anima"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border/50 bg-background px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:border-border hover:text-foreground"
-            >
-              <Github className="h-4 w-4" />
-              {t("github")}
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 overflow-hidden rounded-2xl border border-border/50 sm:mt-20 sm:grid-cols-5 [&>*+*]:border-l [&>*+*]:border-border/50">
-          {PHASES.map((phase, i) => (
-            <div
-              key={phase}
-              className="group relative cursor-default bg-background/80 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-primary/[0.03]"
-            >
-              <div className="mb-3 text-xs tabular-nums text-muted-foreground/50">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <div className="font-sans text-sm font-medium">{t(phase)}</div>
-              <div className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {t(`${phase}Desc`)}
-              </div>
-              <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+				<div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border/50 bg-border/50 sm:grid-cols-2 lg:grid-cols-5 sm:[&>:last-child]:col-span-2 lg:[&>:last-child]:col-span-1">
+					{PHASES.map((phase, i) => (
+						<div
+							key={phase}
+							className="group relative flex cursor-default flex-col gap-3 lg:gap-6 bg-background/60 p-6 lg:p-9 backdrop-blur-lg transition-all duration-300 hover:bg-background/30"
+						>
+							<div className="text-sm md:text-base lg:text-md tabular-nums text-rose-200 font-mono group-hover:text-rose-300 transition-all duration-300">
+								{String(i + 1).padStart(2, "0")}
+							</div>
+							<div className="font-serif text-lg md:text-xl lg:text-2xl font-medium dark-text-white">
+								{t(phase)}
+							</div>
+							<div className="text-sm leading-relaxed text-muted-foreground">
+								{t(`${phase}Desc`)}
+							</div>
+							<div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	);
 }
