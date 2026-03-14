@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AnimatePresence, motion, useInView, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
+import { Link } from "@/i18n/navigation";
 
 const FEATURE_KEYS = [
 	"consciousness",
@@ -127,6 +128,15 @@ export function FeaturesSection() {
 									<p className="text-sm leading-relaxed text-muted-foreground">
 										{t(`${key}Desc`)}
 									</p>
+									{key === "identity" && (
+										<Link
+											href="/seed"
+											className="mt-2 inline-flex items-center gap-2 rounded-lg border border-border/50 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur-xl transition-all duration-300 hover:border-primary/50 hover:text-foreground"
+										>
+											{t("identityLink")}
+											<span aria-hidden="true">&rarr;</span>
+										</Link>
+									)}
 								</div>
 							</motion.div>
 						);

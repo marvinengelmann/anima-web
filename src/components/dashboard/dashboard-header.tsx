@@ -1,8 +1,10 @@
 "use client";
 
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faDna } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import type { TimeRange } from "@/lib/types";
 import { LanguageSwitcher } from "./language-switcher";
 import { ThemeToggle } from "./theme-toggle";
@@ -33,6 +35,12 @@ export function DashboardHeader({ range }: DashboardHeaderProps) {
 								{t("liveIndicator")}
 							</span>
 						</div>
+						<Link
+							href="/seed"
+							className="text-muted-foreground transition-colors hover:text-foreground"
+						>
+							<FontAwesomeIcon icon={faDna} className="h-4 w-4" />
+						</Link>
 						<a
 							href="https://github.com/marvinengelmann/anima"
 							target="_blank"
