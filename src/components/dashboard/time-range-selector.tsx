@@ -44,8 +44,8 @@ export function TimeRangeSelector({ value }: TimeRangeSelectorProps) {
 					onClick={() => handleChange(range)}
 					className={`cursor-pointer rounded-md px-2 py-1 text-xs font-medium transition-colors ${
 						value === range
-							? "bg-taupe-800 text-taupe-50"
-							: "text-muted-foreground hover:bg-taupe-900 hover:text-foreground"
+							? "dark:bg-taupe-800 bg-taupe-200 dark:text-taupe-50 text-taupe-950"
+							: "text-muted-foreground dark:hover:bg-taupe-900 hover:bg-taupe-100 hover:text-foreground"
 					}`}
 				>
 					{t(range)}

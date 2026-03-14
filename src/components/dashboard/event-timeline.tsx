@@ -104,10 +104,7 @@ export function EventTimeline({ events, maxItems = 8 }: EventTimelineProps) {
 						className="flex flex-col gap-3"
 					>
 						{displayEvents.map((event, i) => (
-							<motion.div
-								key={`${event.timestamp}-${i}`}
-								variants={eventItem}
-							>
+							<motion.div key={`${event.timestamp}-${i}`} variants={eventItem}>
 								<div className="rounded-2xl border border-border/50 bg-card p-5 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-[0_0_24px] hover:shadow-primary/5">
 									<div className="flex items-start gap-4">
 										<div
@@ -138,35 +135,33 @@ export function EventTimeline({ events, maxItems = 8 }: EventTimelineProps) {
 
 											{Object.keys(event.deltas).length > 0 && (
 												<div className="mt-3 flex flex-wrap gap-2">
-													{Object.entries(event.deltas).map(
-														([key, value]) => {
-															if (value === undefined) return null;
-															const color =
-																EMOTION_COLORS[key as keyof EmotionalState];
-															return (
+													{Object.entries(event.deltas).map(([key, value]) => {
+														if (value === undefined) return null;
+														const color =
+															EMOTION_COLORS[key as keyof EmotionalState];
+														return (
+															<span
+																key={key}
+																className="inline-flex items-center gap-1.5 rounded-full border border-border/50 px-2.5 py-1 font-mono text-xs tabular-nums"
+															>
 																<span
-																	key={key}
-																	className="inline-flex items-center gap-1.5 rounded-full border border-border/50 px-2.5 py-1 font-mono text-xs tabular-nums"
+																	className="inline-block h-1.5 w-1.5 rounded-full"
+																	style={{ backgroundColor: color }}
+																/>
+																{te(key as never)}
+																<span
+																	className={
+																		value > 0
+																			? "text-green-500"
+																			: "text-red-500"
+																	}
 																>
-																	<span
-																		className="inline-block h-1.5 w-1.5 rounded-full"
-																		style={{ backgroundColor: color }}
-																	/>
-																	{te(key as never)}
-																	<span
-																		className={
-																			value > 0
-																				? "text-green-500"
-																				: "text-red-500"
-																		}
-																	>
-																		{value > 0 ? "+" : ""}
-																		{(value * 100).toFixed(0)}
-																	</span>
+																	{value > 0 ? "+" : ""}
+																	{(value * 100).toFixed(0)}
 																</span>
-															);
-														},
-													)}
+															</span>
+														);
+													})}
 												</div>
 											)}
 										</div>

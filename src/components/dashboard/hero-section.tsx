@@ -70,7 +70,7 @@ export function HeroSection() {
 							key={phase}
 							className="group relative flex cursor-default flex-col gap-3 lg:gap-6 bg-background/60 p-6 lg:p-9 backdrop-blur-lg transition-all duration-300 hover:bg-background/30"
 						>
-							<div className="text-sm md:text-base lg:text-md tabular-nums text-rose-200 font-mono group-hover:text-rose-300 transition-all duration-300">
+							<div className="text-sm md:text-base lg:text-md tabular-nums dark:text-rose-200 text-rose-400 font-mono dark:group-hover:text-rose-300 group-hover:text-rose-600 transition-all duration-300">
 								{String(i + 1).padStart(2, "0")}
 							</div>
 							<div className="font-serif text-xl lg:text-2xl font-medium dark-text-white">
