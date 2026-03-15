@@ -1,6 +1,6 @@
 "use client"
 
-import { faArrowLeft, faDice, faLink } from "@fortawesome/pro-light-svg-icons"
+import { faArrowLeft, faDice } from "@fortawesome/pro-light-svg-icons"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Logo } from "@/components/logo"
@@ -19,7 +19,7 @@ import { BigFiveSection } from "./sections/big-five-section"
 import { CommunicationSection } from "./sections/communication-section"
 import { EmotionalBaselineSection } from "./sections/emotional-baseline-section"
 import { InterestsSection } from "./sections/interests-section"
-import { MbtiBadge } from "./sections/mbti-badge"
+import { ResultsHeader, MBTI_GROUPS, GROUP_GLOW_CLASSES } from "./sections/mbti-badge"
 import { SelfConceptSection } from "./sections/self-concept-section"
 import { ValuesSection } from "./sections/values-section"
 import { VoiceSection } from "./sections/voice-section"
@@ -113,6 +113,10 @@ export function ConsciousnessGenerator({ initialSeed }: ConsciousnessGeneratorPr
           <Waves strokeColor="var(--color-border)" backgroundColor="transparent" pointerSize={0.5} />
         </div>
 
+        <div className="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center">
+          <div className="h-full w-full animate-[world-glow_8s_ease-in-out_infinite] bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_60%)] opacity-[0.1]" />
+        </div>
+
         <div className="relative z-10 container flex flex-col items-center gap-10 py-20 md:py-28 lg:py-32 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -199,25 +203,22 @@ export function ConsciousnessGenerator({ initialSeed }: ConsciousnessGeneratorPr
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="bg-muted"
+            className="relative overflow-hidden bg-muted"
           >
+            <div
+              className={`pointer-events-none absolute inset-0 blur-3xl bg-[radial-gradient(ellipse_at_center_top,var(--glow-color),transparent_60%)] ${GROUP_GLOW_CLASSES[MBTI_GROUPS[dna.personalityType]]}`}
+            />
+
+            <div className="relative">
+            <ResultsHeader
+              type={dna.personalityType}
+              seed={dna.seed}
+              copied={copied}
+              onShare={handleShare}
+              delay={0}
+            />
+
             <div className="container flex flex-col gap-3">
-              <div className="flex items-center justify-between pt-2">
-                <p className="font-mono text-sm text-muted-foreground tracking-wider">
-                  {dna.seed}
-                </p>
-                <button
-                  type="button"
-                  onClick={handleShare}
-                  className="flex items-center gap-2 rounded-lg border border-border/50 bg-card px-3 py-1.5 text-xs text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground cursor-pointer"
-                >
-                  <FontAwesomeIcon icon={faLink} className="h-3 w-3" />
-                  {copied ? t("copied") : t("share")}
-                </button>
-              </div>
-
-              <MbtiBadge type={dna.personalityType} delay={0} />
-
               <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                 <BigFiveSection bigFive={dna.bigFive} delay={0.08} />
                 <EmotionalBaselineSection baseline={dna.emotionalBaseline} delay={0.16} />
@@ -237,6 +238,7 @@ export function ConsciousnessGenerator({ initialSeed }: ConsciousnessGeneratorPr
                 <SelfConceptSection concept={dna.initialSelfConcept} delay={0.56} />
                 <VoiceSection voice={dna.voiceCharacteristics} delay={0.64} />
               </div>
+            </div>
             </div>
           </motion.section>
         )}
