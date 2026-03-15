@@ -67,9 +67,7 @@ export interface GenesisDNA {
   personalityType: PersonalityType
   bigFive: BigFive
   emotionalBaseline: EmotionalBaseline
-  valueHierarchy: string[]
   aestheticPreferences: AestheticPreferences
-  interestSeeds: string[]
   communicationStyle: CommunicationStyle
   initialSelfConcept: SelfConcept
   voiceCharacteristics: VoiceCharacteristics

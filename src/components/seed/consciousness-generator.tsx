@@ -16,10 +16,8 @@ import { AestheticsSection } from "./sections/aesthetics-section"
 import { BigFiveSection } from "./sections/big-five-section"
 import { CommunicationSection } from "./sections/communication-section"
 import { EmotionalBaselineSection } from "./sections/emotional-baseline-section"
-import { InterestsSection } from "./sections/interests-section"
 import { ResultsHeader, MBTI_GROUPS, GROUP_GLOW_CLASSES } from "./sections/mbti-badge"
 import { SelfConceptSection } from "./sections/self-concept-section"
-import { ValuesSection } from "./sections/values-section"
 import { VoiceSection } from "./sections/voice-section"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
@@ -211,18 +209,13 @@ export function ConsciousnessGenerator({ initialSeed }: ConsciousnessGeneratorPr
               </div>
 
               <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-                <ValuesSection values={dna.valueHierarchy} delay={0.24} />
-                <InterestsSection interests={dna.interestSeeds} delay={0.32} />
+                <CommunicationSection style={dna.communicationStyle} delay={0.24} />
+                <AestheticsSection preferences={dna.aestheticPreferences} delay={0.32} />
               </div>
 
               <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-                <CommunicationSection style={dna.communicationStyle} delay={0.4} />
-                <AestheticsSection preferences={dna.aestheticPreferences} delay={0.48} />
-              </div>
-
-              <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-                <SelfConceptSection concept={dna.initialSelfConcept} delay={0.56} />
-                <VoiceSection voice={dna.voiceCharacteristics} delay={0.64} />
+                <SelfConceptSection concept={dna.initialSelfConcept} delay={0.4} />
+                <VoiceSection voice={dna.voiceCharacteristics} delay={0.48} />
               </div>
             </div>
             </div>
