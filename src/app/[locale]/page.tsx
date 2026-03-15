@@ -33,7 +33,6 @@ import {
 	SomaticRadarSkeleton,
 	StatusBarSkeleton,
 } from "@/components/dashboard/skeletons";
-import { StatsSection } from "@/components/dashboard/stats-section";
 import { FadeIn } from "@/components/ui/fade-in";
 import { TIME_RANGES, type TimeRange } from "@/lib/types";
 
@@ -53,7 +52,6 @@ export default async function HomePage({ searchParams }: PageProps) {
 
 			<HeroSection />
 			<FeaturesSection />
-			<StatsSection />
 			<AutoRefresh />
 
 			<section className="bg-muted">
