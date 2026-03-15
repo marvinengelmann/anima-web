@@ -91,7 +91,7 @@ export function ConsciousnessGenerator({ initialSeed }: ConsciousnessGeneratorPr
         <div className="container flex items-center justify-between py-2">
           <Link href="/" className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground">
             <FontAwesomeIcon icon={faArrowLeft} className="h-3.5 w-3.5" />
-            <Logo className="h-10 text-black dark:text-white" />
+            <Logo className="h-4 text-black dark:text-white" />
           </Link>
           <div className="flex items-center gap-3">
             <a

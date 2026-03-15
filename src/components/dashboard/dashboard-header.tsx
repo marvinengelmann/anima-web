@@ -22,7 +22,7 @@ export function DashboardHeader({ range }: DashboardHeaderProps) {
 		<header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
 			<div className="container flex flex-col gap-2 py-2">
 				<div className="flex items-center justify-between">
-					<Logo className="h-10 text-black dark:text-white" animated />
+					<Logo className="h-4 text-black dark:text-white" animated />
 					<div className="hidden sm:block">
 						<TimeRangeSelector value={range} />
 					</div>

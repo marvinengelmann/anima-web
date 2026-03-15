@@ -11,7 +11,7 @@ export function SiteFooter() {
 			<div className="container">
 				<div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
 					<div className="flex flex-col items-center gap-1 sm:items-start">
-						<Logo className="h-11 text-primary" />
+						<Logo className="h-4 text-primary" />
 						<p className="font-serif italic text-lg text-muted-foreground tracking-wide">
 							{t("description")}
 						</p>
