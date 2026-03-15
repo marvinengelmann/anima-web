@@ -25,16 +25,16 @@ export function SiteHeader({ left, center, right }: SiteHeaderProps) {
 						</Link>
 					)}
 					{center && <div className="hidden sm:block">{center}</div>}
-					<div className="flex items-center gap-3">
-						{right}
+					<div className="flex items-center gap-1">
 						<a
 							href="https://github.com/marvinengelmann/anima"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-muted-foreground transition-colors hover:text-foreground"
+							className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
 						>
-							<FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
+							<FontAwesomeIcon icon={faGithub} className="h-3.5 w-3.5" />
 						</a>
+						{right}
 						<ThemeToggle />
 						<LanguageSwitcher />
 					</div>

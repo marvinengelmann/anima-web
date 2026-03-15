@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTheme } from "next-themes";
+import { useState } from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -17,9 +18,15 @@ import {
 
 export function ThemeToggle() {
 	const { theme, setTheme } = useTheme();
+	const [open, setOpen] = useState(false);
+
+	function handleChange(value: string) {
+		setTheme(value);
+		setOpen(false);
+	}
 
 	return (
-		<DropdownMenu>
+		<DropdownMenu open={open} onOpenChange={setOpen}>
 			<DropdownMenuTrigger
 				id="theme-toggle-trigger"
 				className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
@@ -34,7 +41,7 @@ export function ThemeToggle() {
 				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end" className="w-32">
-				<DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+				<DropdownMenuRadioGroup value={theme} onValueChange={handleChange}>
 					<DropdownMenuRadioItem value="light" className="gap-2 text-xs">
 						<FontAwesomeIcon icon={faSunBright} className="h-3.5 w-3.5" />
 						Light
