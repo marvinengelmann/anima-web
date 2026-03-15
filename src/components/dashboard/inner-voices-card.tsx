@@ -22,7 +22,7 @@ export function InnerVoicesCard({ data }: InnerVoicesCardProps) {
 	const tensionPercent = Math.round(data.tensionLevel * 100);
 
 	return (
-		<Card className="h-full">
+		<Card className="flex-1">
 			<CardHeader>
 				<div className="flex items-center justify-between">
 					<div>
@@ -36,12 +36,12 @@ export function InnerVoicesCard({ data }: InnerVoicesCardProps) {
 					)}
 				</div>
 			</CardHeader>
-			<CardContent className="space-y-4">
+			<CardContent className="flex flex-col gap-4">
 				{!hasVoices ? (
 					<p className="text-sm text-muted-foreground">{t("noDialog")}</p>
 				) : (
 					<>
-						<div className="space-y-2">
+						<div className="flex flex-col gap-2">
 							<div className="flex items-center justify-between text-sm">
 								<span className="text-muted-foreground">{t("tension")}</span>
 								<span className="font-medium">{tensionPercent}%</span>
@@ -62,7 +62,7 @@ export function InnerVoicesCard({ data }: InnerVoicesCardProps) {
 							</div>
 						</div>
 
-						<div className="space-y-2">
+						<div className="flex flex-col gap-2">
 							<span className="text-sm text-muted-foreground">
 								{t("voices")}
 							</span>

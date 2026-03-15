@@ -21,7 +21,7 @@ export function CoherenceGauge({ data }: CoherenceGaugeProps) {
   const scorePercent = Math.round(data.integrationScore * 100)
 
   return (
-    <Card className="h-full">
+    <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
