@@ -105,7 +105,8 @@
 		"title": "Nachglühen",
 		"description": "Nachhallende Resonanz vergangener Ereignisse",
 		"ticksRemaining": "{count} Ticks verbleibend",
-		"intensity": "Intensität"
+		"intensity": "Intensität",
+		"empty": "Keine aktiven Nachglüh-Effekte"
 	},
 	"Triggers": {
 		"message_received": "Nachricht empfangen",

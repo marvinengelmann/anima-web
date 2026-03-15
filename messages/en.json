@@ -105,7 +105,8 @@
 		"title": "Afterglow",
 		"description": "Lingering resonance from recent events",
 		"ticksRemaining": "{count} ticks remaining",
-		"intensity": "Intensity"
+		"intensity": "Intensity",
+		"empty": "No active afterglow effects"
 	},
 	"Triggers": {
 		"message_received": "Message Received",

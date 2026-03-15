@@ -48,15 +48,17 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 			.sort((a, b) => Math.abs(b.totalDelta) - Math.abs(a.totalDelta));
 	}, [entries]);
 
-	if (entries.length === 0) return null;
-
 	return (
 		<Card>
 			<CardHeader>
 				<CardTitle>{t("title")}</CardTitle>
 				<CardDescription>{t("description")}</CardDescription>
 			</CardHeader>
-			<CardContent>
+			{entries.length === 0 ? (
+				<CardContent>
+					<p className="text-sm text-muted-foreground">{t("empty")}</p>
+				</CardContent>
+			) : <CardContent>
 				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
 					{groups.map((group) => {
 						const color = EMOTION_COLORS[group.dimension];
@@ -65,7 +67,12 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 						return (
 							<div key={group.dimension}>
 								<div className="relative" style={{ zIndex: 10 }}>
-									<div className="relative overflow-hidden rounded-lg border border-border bg-background/90 p-3 backdrop-blur-sm">
+									<div
+										className="relative overflow-hidden rounded-lg border bg-background/90 p-3 backdrop-blur-sm"
+										style={{
+											borderColor: `color-mix(in srgb, ${color} 30%, transparent)`,
+										}}
+									>
 										<div
 											className="absolute inset-0 opacity-6"
 											style={{ backgroundColor: color }}
@@ -81,7 +88,7 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 														{te(group.dimension)}
 													</span>
 													{group.count > 1 && (
-														<span className="rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-mono tabular-nums text-muted-foreground">
+														<span className="rounded-full px-1.5 py-0.5 text-[10px] font-mono tabular-nums" style={{ backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`, color: `color-mix(in srgb, ${color} 60%, transparent)` }}>
 															×{group.count}
 														</span>
 													)}
@@ -102,7 +109,7 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 													{(group.maxIntensity * 100).toFixed(0)}%
 												</span>
 											</div>
-											<div className="mt-2 h-1 w-full rounded-full bg-muted">
+											<div className="mt-2 h-1 w-full rounded-full" style={{ backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)` }}>
 												<div
 													className="h-full rounded-full transition-all"
 													style={{
@@ -117,7 +124,7 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 								{Array.from({ length: layers }, (_, i) => (
 									<div
 										key={i}
-										className="relative rounded-lg border border-border/50 bg-background/90 backdrop-blur-sm"
+										className="relative rounded-lg border bg-background/90 backdrop-blur-sm"
 										style={{
 											height: 8,
 											marginTop: -4,
@@ -125,6 +132,7 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 											marginRight: (i + 1) * 6,
 											zIndex: 10 - (i + 1),
 											opacity: 1 - (i + 1) * 0.3,
+											borderColor: `color-mix(in srgb, ${color} 30%, transparent)`,
 										}}
 									>
 										<div
@@ -137,7 +145,7 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 						);
 					})}
 				</div>
-			</CardContent>
+			</CardContent>}
 		</Card>
 	);
 }
