@@ -3,9 +3,18 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, useInView, type Variants } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import { Waves } from "@/components/ui/wave-background";
+
+const ConsciousnessScene = dynamic(
+	() =>
+		import("@/components/three/consciousness-scene").then((mod) => ({
+			default: mod.ConsciousnessScene,
+		})),
+	{ ssr: false },
+);
 
 const PHASES = ["sense", "feel", "deliberate", "act", "maintain"] as const;
 
@@ -33,8 +42,8 @@ export function HeroSection() {
 				/>
 			</div>
 
-			<div className="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center">
-				<div className="h-full w-full animate-[world-glow_8s_ease-in-out_infinite] bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_60%)] opacity-[0.1]" />
+			<div className="absolute inset-0 z-[1]">
+				<ConsciousnessScene />
 			</div>
 
 			<div className="relative z-10 container flex flex-col gap-16 md:gap-17 lg:gap-18">
