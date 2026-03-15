@@ -1,16 +1,14 @@
 "use client"
 
 import { faArrowLeft, faDice } from "@fortawesome/pro-light-svg-icons"
-import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Logo } from "@/components/logo"
+import { SiteHeader } from "@/components/site-header"
 import { AnimatePresence, motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { generateDNA, generateRandomSeed, isValidSeed } from "@/lib/seed/generate"
 import type { GenesisDNA } from "@/lib/seed/types"
-import { LanguageSwitcher } from "@/components/dashboard/language-switcher"
-import { ThemeToggle } from "@/components/dashboard/theme-toggle"
 import { SiteFooter } from "@/components/dashboard/site-footer"
 import { Waves } from "@/components/ui/wave-background"
 import { Link } from "@/i18n/navigation"
@@ -87,26 +85,14 @@ export function ConsciousnessGenerator({ initialSeed }: ConsciousnessGeneratorPr
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="container flex items-center justify-between py-2">
+      <SiteHeader
+        left={
           <Link href="/" className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground">
             <FontAwesomeIcon icon={faArrowLeft} className="h-3.5 w-3.5" />
-            <Logo className="h-4 text-black dark:text-white" />
+            <Logo className="h-4 text-black dark:text-white" animated />
           </Link>
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/marvinengelmann/anima"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
-            </a>
-            <ThemeToggle />
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </header>
+        }
+      />
 
       <section className="relative overflow-hidden border-b border-border/50 bg-white dark:bg-background">
         <div className="absolute inset-0 z-0">
