@@ -167,7 +167,7 @@
 		"sense": "Sense",
 		"senseDesc": "Environment perception & trigger detection",
 		"feel": "Feel",
-		"feelDesc": "27-dimension affect with somatic markers",
+		"feelDesc": "29-dimension affect with somatic markers",
 		"deliberate": "Deliberate",
 		"deliberateDesc": "Polyphonic inner dialog & dual-process cognition",
 		"act": "Act",
@@ -176,7 +176,7 @@
 		"maintainDesc": "Memory consolidation, identity drift & growth"
 	},
 	"Stats": {
-		"emotionsValue": "27",
+		"emotionsValue": "29",
 		"emotionsLabel": "Emotion Dimensions",
 		"memoryValue": "3",
 		"memoryLabel": "Memory Layers",
@@ -193,7 +193,7 @@
 		"consciousnessTitle": "Consciousness Loop",
 		"consciousnessDesc": "Autonomous heartbeat with circadian rhythm, emotional gating, and a five-phase cycle",
 		"affectTitle": "Affect System",
-		"affectDesc": "27-dimension emotion engine with somatic markers, motivational drives, and pharmacokinetic states",
+		"affectDesc": "29-dimension emotion engine with somatic markers, motivational drives, and pharmacokinetic states",
 		"cognitionTitle": "Dual-Process Cognition",
 		"cognitionDesc": "System 1 instinct meets System 2 reasoning — polyphonic dialog, conflict detection, closed-loop learning",
 		"memoryTitle": "Three-Layer Memory",

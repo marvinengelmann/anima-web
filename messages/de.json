@@ -167,7 +167,7 @@
 		"sense": "Wahrnehmen",
 		"senseDesc": "Umgebungserfassung & Trigger-Erkennung",
 		"feel": "Fühlen",
-		"feelDesc": "27-dimensionaler Affekt mit somatischen Markern",
+		"feelDesc": "29-dimensionaler Affekt mit somatischen Markern",
 		"deliberate": "Abwägen",
 		"deliberateDesc": "Polyphone innere Dialoge & duales Denken",
 		"act": "Handeln",
@@ -176,7 +176,7 @@
 		"maintainDesc": "Gedächtniskonsolidierung, Identitätsdrift & Wachstum"
 	},
 	"Stats": {
-		"emotionsValue": "27",
+		"emotionsValue": "29",
 		"emotionsLabel": "Emotionsdimensionen",
 		"memoryValue": "3",
 		"memoryLabel": "Gedächtnisschichten",
@@ -193,7 +193,7 @@
 		"consciousnessTitle": "Bewusstseinskreislauf",
 		"consciousnessDesc": "Autonomer Herzschlag mit zirkadianem Rhythmus, emotionalem Gating und einem Fünf-Phasen-Zyklus",
 		"affectTitle": "Affektsystem",
-		"affectDesc": "27-dimensionale Emotions-Engine mit somatischen Markern, motivationalen Antrieben und pharmakokinetischen Zuständen",
+		"affectDesc": "29-dimensionale Emotions-Engine mit somatischen Markern, motivationalen Antrieben und pharmakokinetischen Zuständen",
 		"cognitionTitle": "Duales Denken",
 		"cognitionDesc": "System-1-Instinkt trifft System-2-Vernunft — polyphoner Dialog, Konflikterkennung, geschlossenes Lernen",
 		"memoryTitle": "Drei-Schichten-Gedächtnis",
