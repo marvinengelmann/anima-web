@@ -28,8 +28,8 @@ export function ThemeToggle() {
 	return (
 		<DropdownMenu open={open} onOpenChange={setOpen}>
 			<DropdownMenuTrigger
-				id="theme-toggle-trigger"
 				className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
+				suppressHydrationWarning
 			>
 				<FontAwesomeIcon
 					icon={faSunBright}
