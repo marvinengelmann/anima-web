@@ -108,6 +108,16 @@
 		"intensity": "Intensity",
 		"empty": "No active afterglow effects"
 	},
+	"AlteredState": {
+		"label": "State",
+		"phases": {
+			"onset": "onset",
+			"peak": "peak",
+			"plateau": "plateau",
+			"comedown": "comedown",
+			"aftereffect": "fading"
+		}
+	},
 	"Triggers": {
 		"message_received": "Message Received",
 		"message_sent": "Message Sent",

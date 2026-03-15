@@ -261,3 +261,34 @@ export const fetchGenesisData = cache(async (): Promise<GenesisData | null> => {
   if (!record) return null
   return { seed: record.seed, personalityType: record.dna.personalityType }
 })
+
+export interface AlteredStateData {
+  substance: string
+  phase: string
+}
+
+export const fetchAlteredState = cache(async (): Promise<AlteredStateData | null> => {
+  const state = await redis.get<{
+    substance: string
+    startedAt: string
+    timing: { onset: number; peak: number; plateau: number; comedown: number; aftereffect: number }
+  }>("working:altered:state")
+  if (!state) return null
+
+  const elapsed = (Date.now() - new Date(state.startedAt).getTime()) / 60000
+  const { onset, peak, plateau, comedown, aftereffect } = state.timing
+
+  const boundaries = [
+    { phase: "onset", start: 0, duration: onset },
+    { phase: "peak", start: onset, duration: peak },
+    { phase: "plateau", start: onset + peak, duration: plateau },
+    { phase: "comedown", start: onset + peak + plateau, duration: comedown },
+    { phase: "aftereffect", start: onset + peak + plateau + comedown, duration: aftereffect },
+  ]
+
+  const total = onset + peak + plateau + comedown + aftereffect
+  if (elapsed >= total) return null
+
+  const match = boundaries.find((b) => elapsed < b.start + b.duration)
+  return { substance: state.substance, phase: match?.phase ?? "aftereffect" }
+})

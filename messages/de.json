@@ -108,6 +108,16 @@
 		"intensity": "Intensität",
 		"empty": "Keine aktiven Nachglüh-Effekte"
 	},
+	"AlteredState": {
+		"label": "Zustand",
+		"phases": {
+			"onset": "Einsatz",
+			"peak": "Höhepunkt",
+			"plateau": "Plateau",
+			"comedown": "Abklingen",
+			"aftereffect": "Nachwirkung"
+		}
+	},
 	"Triggers": {
 		"message_received": "Nachricht empfangen",
 		"message_sent": "Nachricht gesendet",
