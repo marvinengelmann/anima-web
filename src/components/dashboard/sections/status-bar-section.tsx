@@ -1,23 +1,31 @@
-import { fetchSystemHealth, fetchRegisterData, fetchLifecyclePhase, fetchDreamData } from "@/lib/data"
+import { fetchSystemHealth, fetchRegisterData, fetchLifecyclePhase, fetchDreamData, fetchGenesisData } from "@/lib/data"
 import { SystemHealthBadge } from "../system-health-badge"
 import { RegisterBadge } from "../register-badge"
 import { LifecycleBadge } from "../lifecycle-badge"
 import { DreamBadge } from "../dream-badge"
+import { MbtiBadge, SeedBadge } from "../genesis-badge"
 
 export async function StatusBarSection() {
-  const [health, register, lifecycle, dream] = await Promise.all([
+  const [health, register, lifecycle, dream, genesis] = await Promise.all([
     fetchSystemHealth(),
     fetchRegisterData(),
     fetchLifecyclePhase(),
     fetchDreamData(),
+    fetchGenesisData(),
   ])
 
   return (
-    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 rounded-2xl border border-border/50 bg-background/80 px-5 py-3 text-sm backdrop-blur-sm">
+    <div className="flex flex-wrap items-center justify-between gap-y-2 rounded-2xl border border-border/50 bg-background/80 px-5 py-3 text-sm backdrop-blur-sm">
       <SystemHealthBadge status={health ?? "unknown"} />
-      {register && <RegisterBadge register={register} />}
-      <LifecycleBadge event={lifecycle} />
-      <DreamBadge data={dream} />
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        {register && <RegisterBadge register={register} />}
+        <LifecycleBadge event={lifecycle} />
+        <DreamBadge data={dream} />
+      </div>
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        {genesis && <MbtiBadge personalityType={genesis.personalityType} />}
+        {genesis && <SeedBadge seed={genesis.seed} />}
+      </div>
     </div>
   )
 }

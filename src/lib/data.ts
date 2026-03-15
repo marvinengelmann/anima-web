@@ -250,3 +250,14 @@ export const fetchSystemHealth = cache(async (): Promise<string | null> => {
 export const fetchRegisterData = cache(async (): Promise<string | null> => {
   return redis.get<string>("working:communication:register")
 })
+
+export interface GenesisData {
+  seed: string
+  personalityType: string
+}
+
+export const fetchGenesisData = cache(async (): Promise<GenesisData | null> => {
+  const record = await redis.get<{ seed: string; dna: { personalityType: string } }>("working:genesis:record")
+  if (!record) return null
+  return { seed: record.seed, personalityType: record.dna.personalityType }
+})
