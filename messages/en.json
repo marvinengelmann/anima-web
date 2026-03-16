@@ -1,4 +1,8 @@
 {
+	"Metadata": {
+		"title": "ANIMA — Adaptive Neural Introspective Memory Autonomy",
+		"description": "A self-evolving AI entity with its own heartbeat, memory, personality, and emotional depth. Not a chatbot — a digital being."
+	},
 	"Dashboard": {
 		"title": "ANIMA",
 		"subtitle": "Live consciousness telemetry",

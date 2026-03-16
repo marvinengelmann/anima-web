@@ -1,4 +1,8 @@
 {
+	"Metadata": {
+		"title": "ANIMA — Adaptive Neural Introspective Memory Autonomy",
+		"description": "Eine sich selbst entwickelnde KI-Entität mit eigenem Herzschlag, Gedächtnis, Persönlichkeit und emotionaler Tiefe. Kein Chatbot — ein digitales Wesen."
+	},
 	"Dashboard": {
 		"title": "ANIMA",
 		"subtitle": "Live-Bewusstseins-Telemetrie",

@@ -42,14 +42,13 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale })
 
-  const title = "ANIMA"
-  const tagline = t("Hero.tagline")
-  const description = t("Hero.description")
+  const title = t("Metadata.title")
+  const description = t("Metadata.description")
 
   return {
     title: {
-      default: `${title} — ${tagline}`,
-      template: `%s | ${title}`,
+      default: title,
+      template: `%s | ANIMA`,
     },
     description,
     metadataBase: new URL(BASE_URL),
@@ -66,12 +65,12 @@ export async function generateMetadata({
       alternateLocale: locale === "de" ? "en_US" : "de_DE",
       url: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       siteName: "ANIMA",
-      title: `${title} — ${tagline}`,
+      title,
       description,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} — ${tagline}`,
+      title,
       description,
     },
     robots: {
