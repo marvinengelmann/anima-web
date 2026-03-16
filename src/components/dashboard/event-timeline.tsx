@@ -4,41 +4,32 @@ import { format } from "date-fns";
 import { motion, useInView, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useMemo, useRef } from "react";
-import { EMOTION_COLORS } from "@/lib/colors";
-import type { EmotionalState, EmotionEvent } from "@/lib/types";
+import type { TimelineEvent, TimelineEventType } from "@/lib/types";
 
 interface EventTimelineProps {
-	events: EmotionEvent[];
+	events: TimelineEvent[];
 	maxItems?: number;
 }
 
-const TRIGGER_COLORS: Record<string, string> = {
-	message_received: "var(--chart-1)",
-	message_sent: "var(--chart-10)",
-	task_success: "var(--chart-16)",
-	task_failure: "var(--chart-6)",
-	guardian_warning: "var(--chart-5)",
-	guardian_block: "var(--chart-6)",
-	operator_went_silent: "var(--chart-18)",
-	operator_returned: "var(--chart-16)",
-	system_degraded: "var(--chart-6)",
-	system_recovered: "var(--chart-3)",
-	new_goal: "var(--chart-14)",
+const EVENT_COLORS: Record<TimelineEventType, string> = {
+	lifecycle_started: "var(--chart-4)",
+	lifecycle_ended: "var(--chart-10)",
+	sleep_started: "var(--chart-15)",
+	woke_up: "var(--chart-14)",
+	dream_started: "var(--chart-15)",
+	dream_ended: "var(--chart-9)",
+	conversation_started: "var(--chart-1)",
+	conversation_ended: "var(--chart-18)",
+	goal_created: "var(--chart-14)",
 	goal_completed: "var(--chart-16)",
 	goal_failed: "var(--chart-6)",
-	weather_update: "var(--chart-10)",
-	git_activity: "var(--chart-17)",
-	dream_correction: "var(--chart-15)",
-	morning_calibration: "var(--chart-14)",
-	nostalgia_wave: "var(--chart-9)",
-	relational_pattern_match: "var(--chart-7)",
-	drive_frustrated: "var(--chart-13)",
-	drive_conflict: "var(--chart-12)",
-	positive_anticipation: "var(--chart-4)",
-	expectation_violated: "var(--chart-6)",
-	expectation_met: "var(--chart-3)",
-	boundary_violated: "var(--chart-6)",
-	memory_contradiction: "var(--chart-17)",
+	creative_output: "var(--chart-9)",
+	evolution_applied: "var(--chart-17)",
+	posted_to_x: "var(--chart-7)",
+	reflection_completed: "var(--chart-12)",
+	guardian_blocked: "var(--chart-6)",
+	guardian_warned: "var(--chart-5)",
+	altered_state_started: "var(--chart-13)",
 };
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
@@ -63,10 +54,32 @@ const eventItem: Variants = {
 	},
 };
 
+function getEventSubtype(event: TimelineEvent): string | null {
+	const meta = event.metadata;
+	if (!meta) return null;
+
+	if (
+		(event.type === "lifecycle_started" || event.type === "lifecycle_ended") &&
+		typeof meta.eventType === "string"
+	) {
+		return meta.eventType;
+	}
+
+	if (
+		event.type === "altered_state_started" &&
+		typeof meta.alteredEventType === "string"
+	) {
+		return meta.alteredEventType;
+	}
+
+	return null;
+}
+
 export function EventTimeline({ events, maxItems = 8 }: EventTimelineProps) {
 	const t = useTranslations("Events");
-	const tt = useTranslations("Triggers");
-	const te = useTranslations("Emotions");
+	const te = useTranslations("TimelineEvents");
+	const tl = useTranslations("LifecycleTypes");
+	const ta = useTranslations("AlteredTypes");
 	const headerRef = useRef(null);
 	const listRef = useRef(null);
 	const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
@@ -76,6 +89,21 @@ export function EventTimeline({ events, maxItems = 8 }: EventTimelineProps) {
 		() => events.slice(0, maxItems),
 		[events, maxItems],
 	);
+
+	function renderLabel(event: TimelineEvent) {
+		const mainLabel = te.has(event.type) ? te(event.type) : event.type;
+		const subtype = getEventSubtype(event);
+
+		if (!subtype) return mainLabel;
+
+		if (event.type === "altered_state_started") {
+			const subtypeLabel = ta.has(subtype) ? ta(subtype) : subtype;
+			return `${mainLabel}: ${subtypeLabel}`;
+		}
+
+		const subtypeLabel = tl.has(subtype) ? tl(subtype) : subtype;
+		return `${mainLabel}: ${subtypeLabel}`;
+	}
 
 	return (
 		<section className="border-t border-border/50 bg-muted">
@@ -111,59 +139,19 @@ export function EventTimeline({ events, maxItems = 8 }: EventTimelineProps) {
 											className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"
 											style={{
 												backgroundColor:
-													TRIGGER_COLORS[event.trigger] ?? "var(--chart-10)",
+													EVENT_COLORS[event.type] ?? "var(--chart-10)",
 											}}
 										/>
 
 										<div className="flex-1 min-w-0">
 											<div className="flex items-baseline justify-between gap-3">
 												<span className="text-base font-medium">
-													{tt.has(event.trigger)
-														? tt(event.trigger)
-														: event.trigger}
+													{renderLabel(event)}
 												</span>
 												<span className="shrink-0 font-mono text-sm tabular-nums text-muted-foreground/50">
 													{format(new Date(event.timestamp), "HH:mm")}
 												</span>
 											</div>
-
-											{event.detail && (
-												<p className="mt-1 text-sm text-muted-foreground">
-													{event.detail}
-												</p>
-											)}
-
-											{Object.keys(event.deltas).length > 0 && (
-												<div className="mt-3 flex flex-wrap gap-2">
-													{Object.entries(event.deltas).map(([key, value]) => {
-														if (value === undefined) return null;
-														const color =
-															EMOTION_COLORS[key as keyof EmotionalState];
-														return (
-															<span
-																key={key}
-																className="inline-flex items-center gap-1.5 rounded-full border border-border/50 px-2.5 py-1 font-mono text-xs tabular-nums"
-															>
-																<span
-																	className="inline-block h-1.5 w-1.5 rounded-full"
-																	style={{ backgroundColor: color }}
-																/>
-																{te(key as never)}
-																<span
-																	className={
-																		value > 0
-																			? "text-green-500"
-																			: "text-red-500"
-																	}
-																>
-																	{value > 0 ? "+" : ""}
-																	{(value * 100).toFixed(0)}
-																</span>
-															</span>
-														);
-													})}
-												</div>
-											)}
 										</div>
 									</div>
 								</div>

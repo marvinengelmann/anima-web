@@ -71,6 +71,32 @@ export interface EmotionEvent {
   deltas: Partial<EmotionalState>
 }
 
+export type TimelineEventType =
+  | "lifecycle_started"
+  | "lifecycle_ended"
+  | "sleep_started"
+  | "woke_up"
+  | "dream_started"
+  | "dream_ended"
+  | "conversation_started"
+  | "conversation_ended"
+  | "goal_created"
+  | "goal_completed"
+  | "goal_failed"
+  | "creative_output"
+  | "evolution_applied"
+  | "posted_to_x"
+  | "reflection_completed"
+  | "guardian_blocked"
+  | "guardian_warned"
+  | "altered_state_started"
+
+export interface TimelineEvent {
+  type: TimelineEventType
+  timestamp: string
+  metadata?: Record<string, unknown> | null
+}
+
 export interface MomentumVector {
   curiosity: number
   satisfaction: number

@@ -4,7 +4,7 @@ import { cache } from "react"
 import { desc, gte } from "drizzle-orm"
 import { db } from "@/lib/db/client"
 import { redis } from "@/lib/db/redis"
-import { emotionHistory, somaticHistory } from "@/lib/db/schema"
+import { emotionHistory, events, somaticHistory } from "@/lib/db/schema"
 import { getStartDate } from "@/lib/time-range"
 import {
   SECONDARY_EMOTION_KEYS,
@@ -17,6 +17,8 @@ import {
   type DriveState,
   type SecondaryEmotion,
   type EmotionEvent,
+  type TimelineEvent,
+  type TimelineEventType,
   type TimeSeriesPoint,
   type SelfConceptState,
   type CoherenceState,
@@ -166,6 +168,25 @@ export function buildEvents(emotionHistory: EmotionHistoryRow[]): EmotionEvent[]
       deltas: {},
     }))
 }
+
+export const fetchTimelineEvents = cache(async (range: TimeRange): Promise<TimelineEvent[]> => {
+  const rows = await db
+    .select({
+      type: events.type,
+      metadata: events.metadata,
+      createdAt: events.createdAt,
+    })
+    .from(events)
+    .where(gte(events.createdAt, getStartDate(range)))
+    .orderBy(desc(events.createdAt))
+    .limit(100)
+
+  return rows.map((row) => ({
+    type: row.type as TimelineEventType,
+    timestamp: row.createdAt.toISOString(),
+    metadata: row.metadata as Record<string, unknown> | null,
+  }))
+})
 
 export function computeSomaticAverage(history: SomaticHistoryRow[]): SomaticState {
   if (history.length === 0) return DEFAULT_SOMATIC
