@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useRevealed } from "@/components/ui/fade-in"
+import { ValueBar } from "@/components/ui/value-bar"
 import { NEUROMODULATOR_KEYS, type NeuromodulatoryState, type NeuromodulatorType } from "@/lib/types"
 
 interface NeuromodulationCardProps {
@@ -28,8 +28,6 @@ const NEUROMODULATOR_COLORS: Record<NeuromodulatorType, string> = {
 
 export function NeuromodulationCard({ data }: NeuromodulationCardProps) {
   const t = useTranslations("Neuromodulation")
-  const revealed = useRevealed()
-
   return (
     <Card>
       <CardHeader>
@@ -55,13 +53,7 @@ export function NeuromodulationCard({ data }: NeuromodulationCardProps) {
                 <span className="font-medium">{percent}%</span>
               </div>
               <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
-                <div
-                  className="h-full rounded-full transition-all duration-700"
-                  style={{
-                    width: revealed ? `${percent}%` : "0%",
-                    backgroundColor: NEUROMODULATOR_COLORS[key],
-                  }}
-                />
+                <ValueBar percent={percent} color={NEUROMODULATOR_COLORS[key]} />
               </div>
             </div>
           )

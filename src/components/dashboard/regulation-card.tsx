@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useRevealed } from "@/components/ui/fade-in"
+import { ValueBar } from "@/components/ui/value-bar"
 import type { EmotionRegulationState } from "@/lib/types"
 
 interface RegulationCardProps {
@@ -18,8 +18,6 @@ interface RegulationCardProps {
 
 export function RegulationCard({ data }: RegulationCardProps) {
   const t = useTranslations("Regulation")
-  const revealed = useRevealed()
-
   const hasStrategies = data.activeStrategies.length > 0
 
   return (
@@ -65,13 +63,7 @@ export function RegulationCard({ data }: RegulationCardProps) {
                     <span className="font-medium">{percent}%</span>
                   </div>
                   <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-                    <div
-                      className="h-full rounded-full transition-all duration-700"
-                      style={{
-                        width: revealed ? `${percent}%` : "0%",
-                        backgroundColor: percent > 70 ? "var(--chart-6)" : "var(--chart-1)",
-                      }}
-                    />
+                    <ValueBar percent={percent} color={percent > 70 ? "var(--chart-6)" : "var(--chart-1)"} />
                   </div>
                 </div>
               </div>

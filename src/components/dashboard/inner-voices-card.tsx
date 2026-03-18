@@ -9,7 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { useRevealed } from "@/components/ui/fade-in";
+import { ValueBar } from "@/components/ui/value-bar";
 import type { PolyphonyState } from "@/lib/types";
 
 interface InnerVoicesCardProps {
@@ -18,8 +18,6 @@ interface InnerVoicesCardProps {
 
 export function InnerVoicesCard({ data }: InnerVoicesCardProps) {
 	const t = useTranslations("InnerVoices");
-	const revealed = useRevealed();
-
 	const hasVoices = data.activeVoices.length > 0;
 	const tensionPercent = Math.round(data.tensionLevel * 100);
 
@@ -49,18 +47,7 @@ export function InnerVoicesCard({ data }: InnerVoicesCardProps) {
 								<span className="font-medium">{tensionPercent}%</span>
 							</div>
 							<div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
-								<div
-									className="h-full rounded-full transition-all duration-700"
-									style={{
-										width: revealed ? `${tensionPercent}%` : "0%",
-										backgroundColor:
-											tensionPercent > 70
-												? "var(--chart-6)"
-												: tensionPercent > 40
-													? "var(--chart-5)"
-													: "var(--chart-3)",
-									}}
-								/>
+								<ValueBar percent={tensionPercent} color={tensionPercent > 70 ? "var(--chart-6)" : tensionPercent > 40 ? "var(--chart-5)" : "var(--chart-3)"} />
 							</div>
 						</div>
 

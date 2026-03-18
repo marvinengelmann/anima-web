@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useRevealed } from "@/components/ui/fade-in"
+import { ValueBar } from "@/components/ui/value-bar"
 import type { FreeEnergyState, PEChannelName } from "@/lib/types"
 
 interface FreeEnergyCardProps {
@@ -30,8 +30,6 @@ const CHANNEL_COLORS: Record<PEChannelName, string> = {
 
 export function FreeEnergyCard({ data }: FreeEnergyCardProps) {
   const t = useTranslations("FreeEnergy")
-  const revealed = useRevealed()
-
   const allostaticPercent = Math.round(data.allostaticLoad * 100)
   const trendLabel = data.trend > 0.05 ? t("rising") : data.trend < -0.05 ? t("falling") : t("stable")
 
@@ -58,13 +56,7 @@ export function FreeEnergyCard({ data }: FreeEnergyCardProps) {
             </div>
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
-            <div
-              className="h-full rounded-full transition-all duration-700"
-              style={{
-                width: revealed ? `${allostaticPercent}%` : "0%",
-                backgroundColor: allostaticPercent > 70 ? "var(--chart-6)" : allostaticPercent > 40 ? "var(--chart-5)" : "var(--chart-3)",
-              }}
-            />
+            <ValueBar percent={allostaticPercent} color={allostaticPercent > 70 ? "var(--chart-6)" : allostaticPercent > 40 ? "var(--chart-5)" : "var(--chart-3)"} />
           </div>
         </div>
 
@@ -80,13 +72,7 @@ export function FreeEnergyCard({ data }: FreeEnergyCardProps) {
                   <span className="font-medium">{pePercent}%</span>
                 </div>
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-                  <div
-                    className="h-full rounded-full transition-all duration-700"
-                    style={{
-                      width: revealed ? `${pePercent}%` : "0%",
-                      backgroundColor: CHANNEL_COLORS[channel.name],
-                    }}
-                  />
+                  <ValueBar percent={pePercent} color={CHANNEL_COLORS[channel.name]} />
                 </div>
               </div>
             )

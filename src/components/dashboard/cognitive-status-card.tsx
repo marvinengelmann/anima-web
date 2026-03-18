@@ -9,7 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { useRevealed } from "@/components/ui/fade-in";
+import { ValueBar } from "@/components/ui/value-bar";
 import type { CognitiveStatusData } from "@/lib/types";
 
 interface CognitiveStatusCardProps {
@@ -18,8 +18,6 @@ interface CognitiveStatusCardProps {
 
 export function CognitiveStatusCard({ data }: CognitiveStatusCardProps) {
 	const t = useTranslations("Cognitive");
-	const revealed = useRevealed();
-
 	const bars = [
 		{
 			label: t("clarity"),
@@ -63,13 +61,7 @@ export function CognitiveStatusCard({ data }: CognitiveStatusCardProps) {
 							</span>
 						</div>
 						<div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
-							<div
-								className="h-full rounded-full transition-all duration-700"
-								style={{
-									width: revealed ? `${Math.round(bar.value * 100)}%` : "0%",
-									backgroundColor: bar.color,
-								}}
-							/>
+							<ValueBar percent={Math.round(bar.value * 100)} color={bar.color} />
 						</div>
 					</div>
 				))}

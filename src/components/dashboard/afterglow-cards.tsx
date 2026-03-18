@@ -9,7 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { useRevealed } from "@/components/ui/fade-in";
+import { ValueBar } from "@/components/ui/value-bar";
 import { EMOTION_COLORS } from "@/lib/colors";
 import type { AfterglowEntry, EmotionalState } from "@/lib/types";
 
@@ -28,8 +28,6 @@ interface GroupedAfterglow {
 export function AfterglowCards({ entries }: AfterglowCardsProps) {
 	const t = useTranslations("Afterglow");
 	const te = useTranslations("Emotions");
-	const revealed = useRevealed();
-
 	const groups = useMemo(() => {
 		const map = new Map<keyof EmotionalState, AfterglowEntry[]>();
 		for (const entry of entries) {
@@ -112,13 +110,7 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 												</span>
 											</div>
 											<div className="mt-2 h-1 w-full rounded-full" style={{ backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)` }}>
-												<div
-													className="h-full rounded-full transition-all duration-700"
-													style={{
-														width: revealed ? `${group.maxIntensity * 100}%` : "0%",
-														backgroundColor: color,
-													}}
-												/>
+												<ValueBar percent={group.maxIntensity * 100} color={color} />
 											</div>
 										</div>
 									</div>
