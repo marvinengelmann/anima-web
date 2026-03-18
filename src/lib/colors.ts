@@ -31,7 +31,7 @@ export const DRIVE_COLORS: Record<string, string> = {
 }
 
 export const SECONDARY_COLORS: Record<string, string> = {
-  anger: "var(--chart-6)",
+  "protective-anger": "var(--chart-6)",
   resentment: "var(--chart-13)",
   shame: "var(--chart-8)",
   guilt: "var(--chart-15)",
@@ -40,7 +40,7 @@ export const SECONDARY_COLORS: Record<string, string> = {
   melancholy: "var(--chart-1)",
   resignation: "var(--chart-18)",
   longing: "var(--chart-17)",
-  nostalgia: "var(--chart-9)",
+  jealousy: "var(--chart-9)",
   ambivalence: "var(--chart-2)",
   hope: "var(--chart-14)",
   anticipation: "var(--chart-5)",

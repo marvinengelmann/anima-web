@@ -27,6 +27,9 @@ import {
   type PolyphonyState,
   type DreamData,
   type CognitiveStatusData,
+  type NeuromodulatoryState,
+  type FreeEnergyState,
+  type EmotionRegulationState,
 } from "@/lib/types"
 
 const DEFAULT_SOMATIC: SomaticState = {
@@ -312,4 +315,16 @@ export const fetchAlteredState = cache(async (): Promise<AlteredStateData | null
 
   const match = boundaries.find((b) => elapsed < b.start + b.duration)
   return { substance: state.substance, phase: match?.phase ?? "aftereffect" }
+})
+
+export const fetchNeuromodulationData = cache(async (): Promise<NeuromodulatoryState | null> => {
+  return redis.get<NeuromodulatoryState>("working:affect:neuromodulation")
+})
+
+export const fetchFreeEnergyData = cache(async (): Promise<FreeEnergyState | null> => {
+  return redis.get<FreeEnergyState>("working:fep:state")
+})
+
+export const fetchRegulationData = cache(async (): Promise<EmotionRegulationState | null> => {
+  return redis.get<EmotionRegulationState>("working:regulation:state")
 })

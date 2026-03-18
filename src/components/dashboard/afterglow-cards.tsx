@@ -9,6 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { useRevealed } from "@/components/ui/fade-in";
 import { EMOTION_COLORS } from "@/lib/colors";
 import type { AfterglowEntry, EmotionalState } from "@/lib/types";
 
@@ -27,6 +28,7 @@ interface GroupedAfterglow {
 export function AfterglowCards({ entries }: AfterglowCardsProps) {
 	const t = useTranslations("Afterglow");
 	const te = useTranslations("Emotions");
+	const revealed = useRevealed();
 
 	const groups = useMemo(() => {
 		const map = new Map<keyof EmotionalState, AfterglowEntry[]>();
@@ -59,7 +61,7 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 					<p className="text-sm text-muted-foreground">{t("empty")}</p>
 				</CardContent>
 			) : <CardContent>
-				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 					{groups.map((group) => {
 						const color = EMOTION_COLORS[group.dimension];
 						const isPositive = group.totalDelta > 0;
@@ -111,9 +113,9 @@ export function AfterglowCards({ entries }: AfterglowCardsProps) {
 											</div>
 											<div className="mt-2 h-1 w-full rounded-full" style={{ backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)` }}>
 												<div
-													className="h-full rounded-full transition-all"
+													className="h-full rounded-full transition-all duration-700"
 													style={{
-														width: `${group.maxIntensity * 100}%`,
+														width: revealed ? `${group.maxIntensity * 100}%` : "0%",
 														backgroundColor: color,
 													}}
 												/>

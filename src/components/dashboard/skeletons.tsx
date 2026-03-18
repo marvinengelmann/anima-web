@@ -327,6 +327,94 @@ export function StatusBarSkeleton() {
   )
 }
 
+export function NeuromodulationSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-40" />
+            <Skeleton className="h-4 w-56" />
+          </div>
+          <Skeleton className="h-5 w-24 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {Array.from({ length: 7 }).map((_, i) => (
+          <div key={i} className="space-y-2">
+            <div className="flex justify-between">
+              <Skeleton className="h-4 w-28" />
+              <Skeleton className="h-4 w-10" />
+            </div>
+            <Skeleton className="h-2 w-full rounded-full" />
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  )
+}
+
+export function FreeEnergySkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-44" />
+            <Skeleton className="h-4 w-60" />
+          </div>
+          <Skeleton className="h-5 w-32 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <div className="flex justify-between">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="h-4 w-10" />
+          </div>
+          <Skeleton className="h-2 w-full rounded-full" />
+        </div>
+        {Array.from({ length: 9 }).map((_, i) => (
+          <div key={i} className="space-y-1">
+            <div className="flex justify-between">
+              <Skeleton className="h-3 w-24" />
+              <Skeleton className="h-3 w-8" />
+            </div>
+            <Skeleton className="h-1.5 w-full rounded-full" />
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  )
+}
+
+export function RegulationSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-5 w-40" />
+            <Skeleton className="h-4 w-56" />
+          </div>
+          <Skeleton className="h-5 w-28 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-3">
+        {Array.from({ length: 2 }).map((_, i) => (
+          <div key={i} className="rounded-lg border border-border/50 p-3 space-y-2">
+            <div className="flex items-center justify-between">
+              <Skeleton className="h-5 w-28 rounded-full" />
+              <Skeleton className="h-3 w-20" />
+            </div>
+            <Skeleton className="h-1.5 w-full rounded-full" />
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  )
+}
+
 export function EventTimelineSkeleton() {
   return (
     <Card>

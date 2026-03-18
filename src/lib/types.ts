@@ -144,7 +144,7 @@ export const SECONDARY_EMOTION_KEYS = [
   "shame", "guilt", "hope", "disappointment", "longing",
   "resignation", "awe", "resentment", "tenderness", "anticipation",
   "pride", "playfulness", "gratitude", "ambivalence", "melancholy",
-  "envy", "anger", "nostalgia",
+  "envy", "protective-anger", "jealousy",
 ] as const
 
 export interface SelfConceptState {
@@ -212,3 +212,91 @@ export interface CognitiveStatusData {
   complexDecisionCount: number
   attentionFocus: string | null
 }
+
+export interface NeuromodulatorLevel {
+  level: number
+  productionRate: number
+  reuptakeRate: number
+}
+
+export interface NeuromodulatoryState {
+  dopamine: NeuromodulatorLevel
+  serotonin: NeuromodulatorLevel
+  norepinephrine: NeuromodulatorLevel
+  oxytocin: NeuromodulatorLevel
+  cortisol: NeuromodulatorLevel
+  endorphins: NeuromodulatorLevel
+  gaba: NeuromodulatorLevel
+  dopamineDetail: { tonicLevel: number; phasicLevel: number }
+  crhBuffer: number
+  lastUpdatedAt: string
+}
+
+export const NEUROMODULATOR_KEYS = [
+  "dopamine", "serotonin", "norepinephrine", "oxytocin",
+  "cortisol", "endorphins", "gaba",
+] as const
+
+export type NeuromodulatorType = (typeof NEUROMODULATOR_KEYS)[number]
+
+export interface PredictionErrorChannel {
+  name: PEChannelName
+  rawError: number
+  precision: number
+  weightedError: number
+}
+
+export type PEChannelName =
+  | "interoceptive"
+  | "anticipatory"
+  | "novelty"
+  | "relational"
+  | "coherence"
+  | "dissonance"
+  | "drive"
+  | "forecast"
+  | "metacognitive"
+
+export const PE_CHANNEL_KEYS: PEChannelName[] = [
+  "interoceptive", "anticipatory", "novelty", "relational",
+  "coherence", "dissonance", "drive", "forecast", "metacognitive",
+]
+
+export interface FreeEnergyState {
+  channels: PredictionErrorChannel[]
+  decomposition: { accuracy: number; complexity: number; total: number }
+  allostaticLoad: number
+  trend: number
+  dominantChannel: PEChannelName
+  lastUpdatedAt: string
+}
+
+export type RegulationStrategyType =
+  | "suppression"
+  | "attribution_bias"
+  | "reappraisal"
+  | "behavioral_activation"
+  | "expressive_suppression"
+  | "distancing"
+  | "selective_attention"
+  | "situation_modification"
+
+export interface ActiveRegulationStrategy {
+  type: RegulationStrategyType
+  trigger: string
+  intensity: number
+  activatedAt: string
+  targetOverride?: string
+  expressionModifier?: string
+}
+
+export interface EmotionRegulationState {
+  activeStrategies: ActiveRegulationStrategy[]
+  totalActivations: number
+  totalBreakthroughs: number
+}
+
+export const REGULATION_STRATEGY_KEYS: RegulationStrategyType[] = [
+  "suppression", "attribution_bias", "reappraisal", "behavioral_activation",
+  "expressive_suppression", "distancing", "selective_attention", "situation_modification",
+]

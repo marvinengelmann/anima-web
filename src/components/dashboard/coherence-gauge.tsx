@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { useRevealed } from "@/components/ui/fade-in"
 import type { CoherenceState } from "@/lib/types"
 
 interface CoherenceGaugeProps {
@@ -17,6 +18,7 @@ interface CoherenceGaugeProps {
 
 export function CoherenceGauge({ data }: CoherenceGaugeProps) {
   const t = useTranslations("Coherence")
+  const revealed = useRevealed()
 
   const scorePercent = Math.round(data.integrationScore * 100)
 
@@ -41,8 +43,8 @@ export function CoherenceGauge({ data }: CoherenceGaugeProps) {
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
             <div
-              className="h-full rounded-full bg-primary transition-all"
-              style={{ width: `${scorePercent}%` }}
+              className="h-full rounded-full bg-primary transition-all duration-700"
+              style={{ width: revealed ? `${scorePercent}%` : "0%" }}
             />
           </div>
         </div>
@@ -55,8 +57,8 @@ export function CoherenceGauge({ data }: CoherenceGaugeProps) {
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
               <div
-                className="h-full rounded-full bg-destructive/70 transition-all"
-                style={{ width: `${Math.round(data.regressionDepth * 100)}%` }}
+                className="h-full rounded-full bg-destructive/70 transition-all duration-700"
+                style={{ width: revealed ? `${Math.round(data.regressionDepth * 100)}%` : "0%" }}
               />
             </div>
           </div>

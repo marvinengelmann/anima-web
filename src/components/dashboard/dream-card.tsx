@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { useRevealed } from "@/components/ui/fade-in"
 import type { DreamData } from "@/lib/types"
 
 interface DreamCardProps {
@@ -17,6 +18,7 @@ interface DreamCardProps {
 
 export function DreamCard({ data }: DreamCardProps) {
   const t = useTranslations("Dream")
+  const revealed = useRevealed()
 
   return (
     <Card>
@@ -74,8 +76,8 @@ export function DreamCard({ data }: DreamCardProps) {
               </div>
               <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
                 <div
-                  className="h-full rounded-full bg-chart-8 transition-all"
-                  style={{ width: `${Math.round(data.afterglow.intensity * 100)}%` }}
+                  className="h-full rounded-full bg-chart-8 transition-all duration-700"
+                  style={{ width: revealed ? `${Math.round(data.afterglow.intensity * 100)}%` : "0%" }}
                 />
               </div>
             </div>

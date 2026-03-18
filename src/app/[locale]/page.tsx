@@ -8,10 +8,14 @@ import { AfterglowSection } from "@/components/dashboard/sections/afterglow-sect
 import { AttachmentSection } from "@/components/dashboard/sections/attachment-section";
 import { CognitiveSection } from "@/components/dashboard/sections/cognitive-section";
 import { CoherenceSection } from "@/components/dashboard/sections/coherence-section";
+import { DreamSection } from "@/components/dashboard/sections/dream-section";
 import { DriveSection } from "@/components/dashboard/sections/drive-section";
 import { EmotionalFlowSection } from "@/components/dashboard/sections/emotional-flow-section";
 import { EventTimelineSection } from "@/components/dashboard/sections/event-timeline-section";
+import { FreeEnergySection } from "@/components/dashboard/sections/free-energy-section";
 import { InnerVoicesSection } from "@/components/dashboard/sections/inner-voices-section";
+import { NeuromodulationSection } from "@/components/dashboard/sections/neuromodulation-section";
+import { RegulationSection } from "@/components/dashboard/sections/regulation-section";
 import { ResourceMomentumSection } from "@/components/dashboard/sections/resource-momentum-section";
 import { SecondarySection } from "@/components/dashboard/sections/secondary-section";
 import { SelfConceptSection } from "@/components/dashboard/sections/self-concept-section";
@@ -23,10 +27,14 @@ import {
 	AttachmentSkeleton,
 	CognitiveSkeleton,
 	CoherenceSkeleton,
+	DreamSkeleton,
 	DriveSkeleton,
 	EmotionalFlowSkeleton,
 	EventTimelineSkeleton,
+	FreeEnergySkeleton,
 	InnerVoicesSkeleton,
+	NeuromodulationSkeleton,
+	RegulationSkeleton,
 	ResourceMomentumSkeleton,
 	SecondarySkeleton,
 	SelfConceptSkeleton,
@@ -94,6 +102,15 @@ export default async function HomePage({ searchParams }: PageProps) {
 					</FadeIn>
 
 					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+						<Suspense fallback={<NeuromodulationSkeleton />}>
+							<NeuromodulationSection />
+						</Suspense>
+						<Suspense fallback={<FreeEnergySkeleton />}>
+							<FreeEnergySection />
+						</Suspense>
+					</FadeIn>
+
+					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
 						<Suspense fallback={<AttachmentSkeleton />}>
 							<AttachmentSection />
 						</Suspense>
@@ -111,12 +128,20 @@ export default async function HomePage({ searchParams }: PageProps) {
 								<InnerVoicesSection />
 							</Suspense>
 						</div>
-						<Suspense fallback={<CognitiveSkeleton />}>
-							<CognitiveSection />
-						</Suspense>
+						<div className="flex flex-col gap-3">
+							<Suspense fallback={<CognitiveSkeleton />}>
+								<CognitiveSection />
+							</Suspense>
+							<Suspense fallback={<DreamSkeleton />}>
+								<DreamSection />
+							</Suspense>
+						</div>
 					</FadeIn>
 
-					<FadeIn>
+					<FadeIn className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+						<Suspense fallback={<RegulationSkeleton />}>
+							<RegulationSection />
+						</Suspense>
 						<Suspense fallback={<AfterglowSkeleton />}>
 							<AfterglowSection range={range} />
 						</Suspense>
