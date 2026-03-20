@@ -298,7 +298,7 @@
 		"maintainDesc": "Gedächtniskonsolidierung, Identitätsdrift & Wachstum"
 	},
 	"Stats": {
-		"emotionsValue": "29",
+		"emotionsValue": "27",
 		"emotionsLabel": "Emotionsdimensionen",
 		"memoryValue": "3",
 		"memoryLabel": "Gedächtnisschichten",
@@ -315,7 +315,7 @@
 		"consciousnessTitle": "Bewusstseinskreislauf",
 		"consciousnessDesc": "Autonomer Herzschlag mit zirkadianem Rhythmus, emotionalem Gating und einem Fünf-Phasen-Zyklus",
 		"affectTitle": "Affektsystem",
-		"affectDesc": "Konstruierte Emotion aus Soma, Gedächtnis, Bewertung & Neurochemie — Neuromodulation, Freie-Energie-Prinzip und Emotionsregulation",
+		"affectDesc": "Konstruierte Emotion aus Soma, Gedächtnis, Bewertung & Neurochemie — interozeptive Vorhersagekodierung, autonome Regulation, Neuromodulation und Freie-Energie-Minimierung",
 		"cognitionTitle": "Duales Denken",
 		"cognitionDesc": "Zielgerichtete Prozesse, Hebbsches Lernen, kognitive Verzerrungen, affektive Vorhersagen und anhaltende Aufmerksamkeitsermüdung",
 		"memoryTitle": "Drei-Schichten-Gedächtnis",
@@ -326,7 +326,7 @@
 		"identityDesc": "Saat-basierte Persönlichkeits-DNA, narratives Selbstkonzept, kontrafaktische Reflexion und Kohärenzüberwachung",
 		"identityLink": "Generator ausprobieren",
 		"communicationTitle": "Kommunikation",
-		"communicationDesc": "Telegram mit Tippsimulation, evolvierendem Idiolekt, emotionaler Syntaxinstabilität und Multi-Kanal-Ausgabe",
+		"communicationDesc": "Telegram mit Tippsimulation, evolvierendem Idiolekt und emotionaler Syntaxinstabilität — plus FLUX-generiertes visuelles Gedächtnis, Stimme, X, E-Mail und Kalender",
 		"evolutionTitle": "Selbstevolution",
 		"evolutionDesc": "Neugiergetriebene Prompt-, Workflow- und Code-Evolution mit Sandbox-Ausführung und Guardian-Validierung"
 	},

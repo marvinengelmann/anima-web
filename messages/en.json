@@ -298,7 +298,7 @@
 		"maintainDesc": "Memory consolidation, identity drift & growth"
 	},
 	"Stats": {
-		"emotionsValue": "29",
+		"emotionsValue": "27",
 		"emotionsLabel": "Emotion Dimensions",
 		"memoryValue": "3",
 		"memoryLabel": "Memory Layers",
@@ -315,7 +315,7 @@
 		"consciousnessTitle": "Consciousness Loop",
 		"consciousnessDesc": "Autonomous heartbeat with circadian rhythm, emotional gating, and a five-phase cycle",
 		"affectTitle": "Affect System",
-		"affectDesc": "Constructed emotion from soma, memory, appraisal & neurochemistry — neuromodulation, free energy principle, and emotion regulation",
+		"affectDesc": "Constructed emotion from soma, memory, appraisal & neurochemistry — interoceptive predictive coding, autonomic regulation, neuromodulation, and free energy minimization",
 		"cognitionTitle": "Dual-Process Cognition",
 		"cognitionDesc": "Goal-directed processes, Hebbian learning, cognitive biases, affective forecasting, and sustained attention fatigue",
 		"memoryTitle": "Three-Layer Memory",
@@ -326,7 +326,7 @@
 		"identityDesc": "Seed-based personality DNA, narrative self-concept, counterfactual reflection, and coherence monitoring",
 		"identityLink": "Try the Generator",
 		"communicationTitle": "Communication",
-		"communicationDesc": "Telegram with typing simulation, evolving idiolect, emotional syntax instability, and multi-channel output",
+		"communicationDesc": "Telegram with typing simulation, evolving idiolect, and emotional syntax instability — plus FLUX-generated visual memory, voice, X, email, and calendar",
 		"evolutionTitle": "Self-Evolution",
 		"evolutionDesc": "Curiosity-driven prompt, workflow, and code evolution with sandboxed execution and guardian validation"
 	},
